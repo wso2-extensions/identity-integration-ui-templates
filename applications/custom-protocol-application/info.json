@@ -5,6 +5,8 @@
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/custom-template.svg",
     "displayOrder": 5,
     "category": "DEFAULT",
-    "tags": [ "Default" ],
+    "tags": [
+        "Default"
+    ],
     "type": "applications"
 }
