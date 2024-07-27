@@ -17,18 +17,14 @@
  */
 
 import { ReactElement } from "react";
-import "./styles.css";
-import { Header } from "./components/header";
-import { Markdown } from "./components/markdown";
-import MarkdownContentProvider from "./providers/markdown-content-provider";
+import { Editor } from "./editor";
+import { Preview } from "./preview";
 
-export const App = (): ReactElement => {
+export const Markdown = (): ReactElement => {
     return (
-        <MarkdownContentProvider>
-            <div className="markdown-sandbox">
-                <Header/>
-                <Markdown/>
-            </div>
-        </MarkdownContentProvider>
+        <div className="markdown-container">
+            <Editor/>
+            <Preview/>
+        </div>
     );
 };

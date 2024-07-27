@@ -20,7 +20,7 @@ const cp = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
-const IDENTITY_APPS_REPOSITORY = "https://github.com/wso2/identity-apps.git";
+const IDENTITY_APPS_REPOSITORY = "https://github.com/DilshanSenarath/identity-apps.git";
 
 // Function to delete a directory and its contents.
 function deleteDirectory(dirPath) {
@@ -100,7 +100,7 @@ cp.execSync(`pnpm store prune`);
 cp.execSync(`mkdir ${tempDir}`);
 
 console.log("Cloning the identity-apps repository is in progress...");
-cp.execSync(`git clone ${IDENTITY_APPS_REPOSITORY} ${tempDir}`);
+cp.execSync(`git clone --branch sso-templates --single-branch ${IDENTITY_APPS_REPOSITORY} ${tempDir}`);
 
 // Change the current working directory.
 try {

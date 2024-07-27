@@ -1,7 +1,7 @@
 {
   "name": "markdown-editor",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Markdown editor for writing WSO2 Identity Server integration guides.",
   "author": "WSO2",
@@ -33,9 +33,7 @@
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-tsdoc": "^0.2.16",
-    "fs-extra": "^11.1.0",
     "prettier": "^2.8.0",
-    "stylelint": "^15.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
   }

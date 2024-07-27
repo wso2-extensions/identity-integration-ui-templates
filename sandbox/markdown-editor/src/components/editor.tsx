@@ -16,19 +16,25 @@
  * under the License.
  */
 
+import { CodeEditor } from "@wso2is/react-components";
 import { ReactElement } from "react";
-import "./styles.css";
-import { Header } from "./components/header";
-import { Markdown } from "./components/markdown";
-import MarkdownContentProvider from "./providers/markdown-content-provider";
+import useMarkdownContent from "../hooks/use-markdown-content";
 
-export const App = (): ReactElement => {
+export const Editor = (): ReactElement => {
+    const { content, setContent } = useMarkdownContent();
+
     return (
-        <MarkdownContentProvider>
-            <div className="markdown-sandbox">
-                <Header/>
-                <Markdown/>
-            </div>
-        </MarkdownContentProvider>
+        <div className="markdown-editor">
+            <CodeEditor
+                sourceCode={ content }
+                options={ {
+                    lineWrapping: true
+                } }
+                onChange={ (_editor: unknown, _data: unknown, value: string) => {
+                    setContent(value);
+                } }
+                theme="light"
+            />
+        </div>
     );
 };

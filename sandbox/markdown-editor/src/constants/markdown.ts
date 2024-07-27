@@ -16,19 +16,12 @@
  * under the License.
  */
 
-import { ReactElement } from "react";
-import "./styles.css";
-import { Header } from "./components/header";
-import { Markdown } from "./components/markdown";
-import MarkdownContentProvider from "./providers/markdown-content-provider";
-
-export const App = (): ReactElement => {
-    return (
-        <MarkdownContentProvider>
-            <div className="markdown-sandbox">
-                <Header/>
-                <Markdown/>
-            </div>
-        </MarkdownContentProvider>
-    );
-};
+/**
+ * Class containing markdown editor related constants.
+ */
+export class MarkdownEditorConstants {
+    /**
+     * Key name used to store the markdown content in local storage.
+     */
+    public static readonly MARKDOWN_CONTENT_LOCAL_STORAGE_KEY: string = "markdown-content";
+}
