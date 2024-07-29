@@ -16,12 +16,18 @@
  * under the License.
  */
 
-import { CodeEditor } from "@wso2is/react-components";
-import { ReactElement } from "react";
+import { CodeEditor, Popup, PrimaryButton, SecondaryButton } from "@wso2is/react-components";
+import * as codemirror from "codemirror";
+import cloneDeep from "lodash-es/cloneDeep";
+import { ReactElement, useState } from "react";
 import useMarkdownContent from "../hooks/use-markdown-content";
 
 export const Editor = (): ReactElement => {
-    const { content, setContent } = useMarkdownContent();
+    const { content, setContent, getSingleLineContent, clearContent } = useMarkdownContent();
+    const [ currentCursor, setCurrentCursor ] = useState<codemirror.Position | undefined>(undefined);
+    const [ open, setOpen ] = useState<boolean>(false);
+    const [ copied, setCopied ] = useState<boolean>(false);
+    const [ timeoutRef, setTimeoutRef ] = useState<number | undefined>(undefined);
 
     return (
         <div className="markdown-editor">
@@ -30,11 +36,56 @@ export const Editor = (): ReactElement => {
                 options={ {
                     lineWrapping: true
                 } }
-                onChange={ (_editor: unknown, _data: unknown, value: string) => {
+                onChange={ (editor: codemirror.Editor, _data: unknown, value: string) => {
+                    if (value === content && currentCursor) {
+                        editor.setCursor(currentCursor);
+                    }
+
+                    setCurrentCursor(cloneDeep(editor?.getCursor()));
+
                     setContent(value);
                 } }
                 theme="light"
             />
+            <div className="markdown-editor-buttons">
+                <SecondaryButton
+                    onClick={ () => clearContent() }
+                >
+                    Clear
+                </SecondaryButton>
+                <Popup
+                    position="top center"
+                    inverted
+                    content={ copied ? "Markdown content copied successfully!" : "An error occurred while copying." }
+                    open={ open }
+                    trigger={
+                        (
+                            <PrimaryButton
+                                onClick={ () => {
+                                    if (timeoutRef) {
+                                        clearTimeout(timeoutRef);
+                                    }
+
+                                    navigator?.clipboard?.writeText(getSingleLineContent())
+                                        .then(() => setCopied(true))
+                                        .catch(() => setCopied(false))
+                                        .finally(() => {
+                                            setOpen(true);
+                                            setTimeoutRef(
+                                                setTimeout(() => {
+                                                    setOpen(false);
+                                                    if (copied) setCopied(false);
+                                                }, 3000)
+                                            );
+                                        });
+                                } }
+                            >
+                                Copy as Single-Line Markdown
+                            </PrimaryButton>
+                        )
+                    }
+                />
+            </div>
         </div>
     );
 };

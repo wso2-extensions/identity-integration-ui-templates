@@ -156,8 +156,8 @@ const entryPointUpdate = {
 }
 updateJsonFile(filePath, entryPointUpdate);
 const dependencyUpdate = {
-    "@wso2is/core": "file:node_modules/@wso2is/core",
-    "@wso2is/theme": "file:node_modules/@wso2is/theme"
+    "@wso2is/core": "https://gitpkg.vercel.app/wso2/identity-apps/modules/core?master",
+    "@wso2is/theme": "https://gitpkg.vercel.app/wso2/identity-apps/modules/theme?master"
 }
 updateJsonFile(filePath, dependencyUpdate, "dependencies");
 

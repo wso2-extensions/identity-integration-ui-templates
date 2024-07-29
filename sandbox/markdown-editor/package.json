@@ -16,10 +16,13 @@
     "@oxygen-ui/react": "^1.13.2",
     "@oxygen-ui/react-icons": "^1.13.2",
     "@wso2is/react-components": "file:wso2_modules/react-components",
+    "lodash-es": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/codemirror": "^5.52.0",
+    "@types/lodash-es": "^4.17.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/parser": "^7.15.0",

@@ -25,6 +25,10 @@ import.meta.glob(
     "/wso2_modules/react-components/node_modules/@wso2is/theme/dist/lib/themes/wso2is/theme.*.min.css",
     { eager: true }
 );
+import.meta.glob(
+    "/wso2_modules/react-components/dist/index.cjs.css",
+    { eager: true }
+);
 
 // eslint-disable-next-line
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -54,7 +54,7 @@ const MarkdownContentProvider: FunctionComponent<PropsWithChildren> = ({
             convertMarkdownContentToSingleLine(content)
         );
 
-        setContent(content);
+        setContent(convertMarkdownContentToMultiLine(content));
     };
 
     /**

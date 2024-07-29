@@ -16,30 +16,49 @@
  * under the License.
  */
 
-.markdown-sandbox {
+ .markdown-sandbox {
     height: 100vh;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .markdown-sandbox .markdown-container {
-    height: 100%;
+    flex: 1;
     padding: 5px;
+    padding-bottom: 0;
     display: flex;
+    overflow: hidden;
 }
 
 .markdown-sandbox .markdown-container .markdown-editor {
-    height: 100%;
     flex: 0.5;
     border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
 }
 
-.markdown-sandbox .markdown-container .markdown-editor .code-editor,
+.markdown-sandbox .markdown-container .markdown-editor .code-editor {
+    flex: 1;
+    overflow: auto;
+}
+
+.markdown-sandbox .markdown-container .markdown-editor .markdown-editor-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid #ddd;
+}
+
 .markdown-sandbox .markdown-container .markdown-editor .code-editor .react-codemirror2,
 .markdown-sandbox .markdown-container .markdown-editor .code-editor .react-codemirror2 .CodeMirror {
     height: 100%;
 }
 
 .markdown-sandbox .markdown-container .markdown-preview {
-    height: 100%;
     flex: 0.5;
+    padding-left: 10px;
+    padding-right: 5px;
+    background: var(--oxygen-palette-customComponents-AppShell-Main-background);
+    overflow: auto;
 }
