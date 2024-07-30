@@ -17,7 +17,7 @@
  */
 
 import { ThemeProvider } from "@oxygen-ui/react/theme";
-import ReactDOM from "react-dom/client";
+import * as ReactDOM from "react-dom/client";
 import { App } from "./app";
 import Theme from "../wso2_modules/console-theme/theme";
 
@@ -30,7 +30,6 @@ import.meta.glob(
     { eager: true }
 );
 
-// eslint-disable-next-line
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <ThemeProvider theme={ Theme } defaultMode="light">
         <App />

@@ -1,0 +1,4 @@
+packages:
+  - 'wso2_modules/core'
+  - 'wso2_modules/theme'
+  - 'wso2_modules/react-components'

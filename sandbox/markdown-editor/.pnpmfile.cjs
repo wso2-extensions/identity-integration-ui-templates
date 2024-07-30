@@ -21,18 +21,18 @@ const cp = require("child_process");
 module.exports = {
     hooks: {
         readPackage: (pkg, context) => {
-            if (!process.env.PRE_INSTALL_SCRIPT) {
-                console.log("The pre-installation script is running...");
-                try {
-                    cp.execSync("node scripts/pre-install.cjs", { stdio: "inherit" });
-                    console.log("Successfully ran the pre-installation script");
-                } catch (error) {
-                    console.error(`Error running the pre-installation script: ${error.message}`);
-                    process.exit(1);
-                }
+            // if (!process.env.PRE_INSTALL_SCRIPT) {
+            //     console.log("The pre-installation script is running...");
+            //     try {
+            //         cp.execSync("node scripts/pre-install.cjs", { stdio: "inherit" });
+            //         console.log("Successfully ran the pre-installation script");
+            //     } catch (error) {
+            //         console.error(`Error running the pre-installation script: ${error.message}`);
+            //         process.exit(1);
+            //     }
 
-                process.env.PRE_INSTALL_SCRIPT = true;
-            }
+            //     process.env.PRE_INSTALL_SCRIPT = true;
+            // }
 
             return pkg;
         }

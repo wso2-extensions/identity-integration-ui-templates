@@ -114,7 +114,7 @@ module.exports = {
     // no-undef complains about globalThis @see {@link https://github.com/eslint/eslint/issues/11553}
     globalThis: false
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'scripts', 'wso2_modules', 'vite-env.d.ts'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'scripts', 'wso2_modules', 'vite-env.d.ts', 'vite.config.ts'],
   overrides: [
       {
           env: {

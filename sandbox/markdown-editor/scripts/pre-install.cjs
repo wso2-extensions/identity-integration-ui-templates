@@ -102,6 +102,20 @@ cp.execSync(`mkdir ${tempDir}`);
 console.log("Cloning the identity-apps repository is in progress...");
 cp.execSync(`git clone --branch sso-templates --single-branch ${IDENTITY_APPS_REPOSITORY} ${tempDir}`);
 
+
+console.log("Updating the react-components package.json...");
+const filePath = path.join(tempDir, "modules", "react-components", "package.json");
+const entryPointUpdate = {
+    "main": "./dist/index.esm.js",
+    "types": "./dist/src/index.d.ts"
+}
+updateJsonFile(filePath, entryPointUpdate);
+const dependencyUpdate = {
+    "@wso2is/core": "workspace:*",
+    "@wso2is/theme": "workspace:*"
+}
+updateJsonFile(filePath, dependencyUpdate, "dependencies");
+
 // Change the current working directory.
 try {
     process.chdir(tempDir);
@@ -132,6 +146,8 @@ try {
 
 console.log("Clearing the unnecessary data...");
 const reactComponentsSourceDir = path.join(__dirname, "..", "tmp", "modules", "react-components");
+const coreSourceDir = path.join(__dirname, "..", "tmp", "modules", "core");
+const themeSourceDir = path.join(__dirname, "..", "tmp", "modules", "theme");
 const consoleThemeSourceFile = path.join(__dirname, "..", "tmp", "apps", "console", "src", "theme.ts");
 
 // Create a folder to keep the dependent wso2 modules.
@@ -141,24 +157,13 @@ cp.execSync(`mkdir ${consoleThemeDir}`);
 
 try {
     cp.execSync(`cp -r ${reactComponentsSourceDir} ${wso2ModulesDir}`);
+    cp.execSync(`cp -r ${coreSourceDir} ${wso2ModulesDir}`);
+    cp.execSync(`cp -r ${themeSourceDir} ${wso2ModulesDir}`);
     cp.execSync(`cp -r ${consoleThemeSourceFile} ${consoleThemeDir}`);
-    console.log("Successfully copied the react-components and console-theme");
+    console.log("Successfully copied the react-components, core, theme, and console-theme");
 } catch (error) {
-    console.error(`Error copying the react-components, or console-theme: ${error.message}`);
+    console.error(`Error copying the react-components, core, theme, or console-theme: ${error.message}`);
     process.exit(1);
 }
-
-console.log("Updating the react-components package.json...");
-const filePath = path.join(wso2ModulesDir, "react-components", "package.json");
-const entryPointUpdate = {
-    "main": "dist/index.cjs.js",
-    "types": "dist/index.cjs.d.ts"
-}
-updateJsonFile(filePath, entryPointUpdate);
-const dependencyUpdate = {
-    "@wso2is/core": "https://gitpkg.vercel.app/wso2/identity-apps/modules/core?master",
-    "@wso2is/theme": "https://gitpkg.vercel.app/wso2/identity-apps/modules/theme?master"
-}
-updateJsonFile(filePath, dependencyUpdate, "dependencies");
 
 deleteDirectory(tempDir);
