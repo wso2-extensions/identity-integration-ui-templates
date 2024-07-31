@@ -50,3 +50,6 @@ console-theme.ts
 *.njsproj
 *.sln
 *.sw?
+
+# OS specific file
+.DS_Store
