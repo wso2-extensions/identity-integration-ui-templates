@@ -33,6 +33,6 @@
     },
     "include": [
         "src",
-        "wso2_modules/console-theme"
+        "../../packages/console-theme/*.ts"
     ]
 }

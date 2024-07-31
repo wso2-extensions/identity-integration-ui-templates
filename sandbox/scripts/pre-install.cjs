@@ -89,18 +89,18 @@ console.log("Clearing the stale data...");
 const tempDir = path.join(__dirname, "..", "tmp");
 const nodeModulesDir = path.join(__dirname, "..", "node_modules");
 const lockFile = path.join(__dirname, "..", "pnpm-lock.yaml");
-const wso2ModulesDir = path.join(__dirname, "..", "wso2_modules");
+const wso2ModulesDir = path.join(__dirname, "..", "packages");
 deleteDirectory(tempDir);
-deleteDirectory(nodeModulesDir);
 deleteFile(lockFile);
+deleteDirectory(nodeModulesDir);
 deleteDirectory(wso2ModulesDir);
-cp.execSync(`pnpm store prune`);
+cp.execSync("pnpm store prune");
 
 // Create a temporary folder to keep the cloned identity apps repo.
 cp.execSync(`mkdir ${tempDir}`);
 
 console.log("Cloning the identity-apps repository is in progress...");
-cp.execSync(`git clone --branch sso-templates --single-branch ${IDENTITY_APPS_REPOSITORY} ${tempDir}`);
+cp.execSync(`git clone --depth 1 --branch sso-templates --single-branch ${IDENTITY_APPS_REPOSITORY} ${tempDir}`);
 
 
 console.log("Updating the react-components package.json...");
@@ -116,7 +116,7 @@ const dependencyUpdate = {
 }
 updateJsonFile(filePath, dependencyUpdate, "dependencies");
 
-// Change the current working directory.
+// Change the current working directory to tmp.
 try {
     process.chdir(tempDir);
     console.log(`Changed working directory to ${tempDir}`);
@@ -144,22 +144,29 @@ try {
     process.exit(1);
 }
 
+// Change the current working directory to root.
+try {
+    process.chdir(path.join(tempDir, ".."));
+    console.log(`Changed working directory to ${path.join(tempDir, "..")}`);
+} catch (error) {
+    console.error(`Error changing directory: ${error.message}`);
+}
+
 console.log("Clearing the unnecessary data...");
 const reactComponentsSourceDir = path.join(__dirname, "..", "tmp", "modules", "react-components");
 const coreSourceDir = path.join(__dirname, "..", "tmp", "modules", "core");
 const themeSourceDir = path.join(__dirname, "..", "tmp", "modules", "theme");
 const consoleThemeSourceFile = path.join(__dirname, "..", "tmp", "apps", "console", "src", "theme.ts");
+const consoleThemeDestPath = path.join(__dirname, "..", "apps", "markdown-editor", "src", "console-theme.ts");
 
-// Create a folder to keep the dependent wso2 modules.
-cp.execSync(`mkdir ${wso2ModulesDir}`);
-const consoleThemeDir = path.join(wso2ModulesDir, "console-theme");
-cp.execSync(`mkdir ${consoleThemeDir}`);
+// Create a folder to keep identity-apps packages.
+cp.execSync(`mkdir -p ${wso2ModulesDir}`);
 
 try {
     cp.execSync(`cp -r ${reactComponentsSourceDir} ${wso2ModulesDir}`);
     cp.execSync(`cp -r ${coreSourceDir} ${wso2ModulesDir}`);
     cp.execSync(`cp -r ${themeSourceDir} ${wso2ModulesDir}`);
-    cp.execSync(`cp -r ${consoleThemeSourceFile} ${consoleThemeDir}`);
+    cp.execSync(`cp -rf ${consoleThemeSourceFile} ${consoleThemeDestPath}`);
     console.log("Successfully copied the react-components, core, theme, and console-theme");
 } catch (error) {
     console.error(`Error copying the react-components, core, theme, or console-theme: ${error.message}`);

@@ -16,11 +16,22 @@
  * under the License.
  */
 
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { ThemeProvider } from "@oxygen-ui/react/theme";
+import * as ReactDOM from "react-dom/client";
+import { App } from "./app";
+import Theme from "./console-theme";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-    plugins: [ react(), nodePolyfills() ]
-});
+import.meta.glob(
+    "../../../packages/theme/dist/lib/themes/wso2is/theme.*.min.css",
+    { eager: true }
+);
+import.meta.glob(
+    "../../../packages/react-components/dist/index.esm.css",
+    { eager: true }
+);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <ThemeProvider theme={ Theme } defaultMode="light">
+        <App />
+    </ThemeProvider>
+);

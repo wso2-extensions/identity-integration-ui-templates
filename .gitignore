@@ -37,7 +37,8 @@ dist
 dist-ssr
 *.local
 tmp
-wso2_modules
+packages
+console-theme.ts
 
 # Editor directories and files
 .vscode/*

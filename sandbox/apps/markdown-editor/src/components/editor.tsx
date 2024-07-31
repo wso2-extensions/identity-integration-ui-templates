@@ -27,7 +27,7 @@ export const Editor = (): ReactElement => {
     const [ currentCursor, setCurrentCursor ] = useState<codemirror.Position | undefined>(undefined);
     const [ open, setOpen ] = useState<boolean>(false);
     const [ copied, setCopied ] = useState<boolean>(false);
-    const [ timeoutRef, setTimeoutRef ] = useState<number | undefined>(undefined);
+    const [ timeoutRef, setTimeoutRef ] = useState<unknown>(undefined);
 
     return (
         <div className="markdown-editor">
@@ -63,7 +63,7 @@ export const Editor = (): ReactElement => {
                             <PrimaryButton
                                 onClick={ () => {
                                     if (timeoutRef) {
-                                        clearTimeout(timeoutRef);
+                                        clearTimeout(timeoutRef as number);
                                     }
 
                                     navigator?.clipboard?.writeText(getSingleLineContent())
