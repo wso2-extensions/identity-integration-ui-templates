@@ -51,4 +51,4 @@ pnpm preview
 Once the production server is up and running, you can access the application via [http://localhost:4173/](http://localhost:4173/).
 
 ---------------------------------------------------------------------------
-(c) Copyright 2022 WSO2 LLC.
+(c) Copyright 2024 WSO2 LLC.
