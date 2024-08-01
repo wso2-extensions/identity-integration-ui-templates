@@ -45,4 +45,38 @@ jobs:
           token: ${{ env.GH_TOKEN }}
 
       - name: 🟢 Setup node
-        uses: actions
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 🥡 Setup pnpm
+        uses: pnpm/action-setup@v2.1.0
+        with:
+          version: ${{ matrix.pnpm-version }}
+          run_install: false
+
+      - name: 🎈 Get pnpm store directory
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_ENV
+
+      - name: 🧩 Install Dependencies
+        run: |
+          cd sandbox
+          pnpm install
+
+      - name: 🏗️ Build Project
+        run: |
+          cd sandbox
+          export BASE_PATH="/${{ github.event.inputs.basePath }}"
+          pnpm build
+
+      - name: ⚙️ Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: 🌩 Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: sandbox/apps/markdown-editor/dist
+
+      - name: 🔥 Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
