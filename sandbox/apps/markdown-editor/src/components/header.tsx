@@ -33,7 +33,7 @@ export const Header = (): ReactElement => {
                     } }
                     variant="h6"
                 >
-                    Markdown Editor
+                    Markdown Playground
                 </Typography>
                 <Button
                     variant="outlined"
