@@ -73,6 +73,7 @@ jobs:
         id: build
         run: |
           cd sandbox
+          export BASE_PATH="/${{ github.event.inputs.basePath }}"
           pnpm build
 
       - name: ⚙️ Setup Pages
