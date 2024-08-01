@@ -88,10 +88,8 @@ checkGitInstalled();
 console.log("Clearing the stale data...");
 const tempDir = path.join(__dirname, "..", "tmp");
 const nodeModulesDir = path.join(__dirname, "..", "node_modules");
-const lockFile = path.join(__dirname, "..", "pnpm-lock.yaml");
 const wso2ModulesDir = path.join(__dirname, "..", "packages");
 deleteDirectory(tempDir);
-deleteFile(lockFile);
 deleteDirectory(nodeModulesDir);
 deleteDirectory(wso2ModulesDir);
 
@@ -127,7 +125,7 @@ try {
 console.log("Building the identity-apps repository is in progress...");
 // Run pnpm install.
 try {
-    cp.execSync("pnpm install");
+    cp.execSync("pnpm install --no-frozen-lockfile");
     console.log("Successfully ran pnpm install");
 } catch (error) {
     console.error(`Error running pnpm install: ${error.message}`);
