@@ -94,7 +94,6 @@ deleteDirectory(tempDir);
 deleteFile(lockFile);
 deleteDirectory(nodeModulesDir);
 deleteDirectory(wso2ModulesDir);
-cp.execSync("pnpm store prune");
 
 // Create a temporary folder to keep the cloned identity apps repo.
 cp.execSync(`mkdir ${tempDir}`);
