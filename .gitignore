@@ -39,6 +39,7 @@ dist-ssr
 tmp
 packages
 console-theme.ts
+target
 
 # Editor directories and files
 .vscode/*
