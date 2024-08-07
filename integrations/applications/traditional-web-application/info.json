@@ -1,6 +1,5 @@
 {
     "id": "traditional-web-application",
-    "version": "${project.version}",
     "name": "Traditional Web Application",
     "description": "A web application that runs application logic on the server.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/traditional-template.svg",
