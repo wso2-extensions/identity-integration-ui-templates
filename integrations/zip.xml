@@ -24,8 +24,8 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>applications</directory>
-            <outputDirectory>applications</outputDirectory>
+            <directory>resources</directory>
+            <outputDirectory>${zip.root.directory.name}/${project.name}</outputDirectory>
             <includes>
                 <include>**/*</include>
             </includes>
