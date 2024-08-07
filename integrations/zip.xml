@@ -24,7 +24,7 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>resources</directory>
+            <directory>${project.build.directory}/resources</directory>
             <outputDirectory>${zip.root.directory.name}/${project.name}</outputDirectory>
             <includes>
                 <include>**/*</include>
