@@ -25,10 +25,10 @@
     </parent>
     
     <name>single-page-application</name>
-    <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
     <artifactId>org.wso2.carbon.identity.integration.ui.templates.applications.single-page-application</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <url>http://wso2.org</url>
 
     <build>
         <plugins>

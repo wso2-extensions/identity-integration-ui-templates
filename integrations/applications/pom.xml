@@ -25,10 +25,10 @@
     </parent>
     
     <name>Application Templates - Aggregator Pom</name>
-    <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
     <artifactId>application-templates</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <url>http://wso2.org</url>
 
     <modules>
         <module>custom-application</module>
