@@ -20,13 +20,13 @@
     <parent>
         <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
         <artifactId>identity-inetgration-ui-templates</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
     <name>Applications Aggregator Pom</name>
     <artifactId>application-templates</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
