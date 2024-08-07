@@ -24,7 +24,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <name>Application Templates</name>
+    <name>Application Templates - Aggregator Pom</name>
     <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
     <artifactId>application-templates</artifactId>
     <modelVersion>4.0.0</modelVersion>
