@@ -1,7 +1,6 @@
 {
     "id": "single-page-application",
     "name": "Single-Page Application",
-    "version": "${project.version}",
     "description": "A web application that runs application logic in the browser.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/spa-template.svg",
     "displayOrder": 0,
