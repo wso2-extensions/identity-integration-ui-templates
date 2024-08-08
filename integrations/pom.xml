@@ -93,9 +93,12 @@
                             </goals>
                             <configuration>
                                 <target>
-                                    <mkdir dir="${zip.root.dir.path}" />
-                                    <zip destfile="${project.artifactId}-${project.version}.zip">
-                                        <fileset dir="resources" />
+                                    <mkdir dir="${project.build.directory}/templates/${zip.root.dir.path}" />
+                                    <copy todir="${project.build.directory}/templates/${zip.root.dir.path}">
+                                        <fileset dir="resources"/>
+                                    </copy>
+                                    <zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip">
+                                        <fileset dir="${project.build.directory}/templates" />
                                     </zip>
                                 </target>
                             </configuration>
