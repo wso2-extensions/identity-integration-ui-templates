@@ -52,7 +52,12 @@
     </distributionManagement>
 
     <modules>
-        <module>applications</module>
+        <module>applications/custom-application</module>
+        <module>applications/custom-protocol-application</module>
+        <module>applications/m2m-application</module>
+        <module>applications/mobile-application</module>
+        <module>applications/single-page-application</module>
+        <module>applications/traditional-web-application</module>
     </modules>
 
 </project>

@@ -19,7 +19,7 @@
     
     <parent>
         <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
-        <artifactId>application-templates</artifactId>
+        <artifactId>integration-templates</artifactId>
         <version>1.0.3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -32,6 +32,25 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>get-zip-root-dir-path</id>
+                        <goals>
+                            <goal>regex-property</goal>
+                        </goals>
+                        <configuration>
+                            <name>zip.root.dir.path</name>
+                            <regex>.*/([^/]+/[^/]+)$</regex>
+                            <value>${project.basedir}</value>
+                            <replacement>$1</replacement>
+                            <failIfNoMatch>true</failIfNoMatch>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
