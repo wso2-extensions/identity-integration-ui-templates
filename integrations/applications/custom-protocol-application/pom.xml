@@ -21,7 +21,7 @@
         <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
         <artifactId>integration-templates</artifactId>
         <version>1.0.3-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     
     <name>custom-protocol-application</name>
