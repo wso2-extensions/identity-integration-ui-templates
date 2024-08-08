@@ -125,7 +125,10 @@
                             </goals>
                             <configuration>
                                 <file>${project.build.directory}/${project.artifactId}-${project.version}.zip</file>
-                                <type>zip</type>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>${project.artifactId}</artifactId>
+                                <version>${project.version}</version>
+                                <packaging>zip</packaging>
                             </configuration>
                         </execution>
                     </executions>
