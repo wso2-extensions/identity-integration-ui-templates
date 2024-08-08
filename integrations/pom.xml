@@ -28,7 +28,7 @@
     <artifactId>integration-templates</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <url>http://wso2.org</url>
 
     <scm>
@@ -95,7 +95,7 @@
                                 <target>
                                     <mkdir dir="${project.build.directory}/template/${zip.root.dir.path}" />
                                     <copy todir="${project.build.directory}/template/${zip.root.dir.path}">
-                                        <fileset dir="resources"/>
+                                        <fileset dir="resources" />
                                     </copy>
                                     <zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip">
                                         <fileset dir="${project.build.directory}/template" />
