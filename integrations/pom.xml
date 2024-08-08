@@ -28,14 +28,14 @@
     <artifactId>integration-templates</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <url>http://wso2.org</url>
 
     <scm>
         <url>https://github.com/wso2-extensions/identity-integration-ui-templates.git</url>
         <developerConnection>scm:git:https://github.com/wso2-extensions/identity-integration-ui-templates.git</developerConnection>
         <connection>scm:git:https://github.com/wso2-extensions/identity-integration-ui-templates.git</connection>
-        <tag>HEAD</tag>
+        <tag>v1.0.3</tag>
     </scm>
 
     <distributionManagement>
@@ -95,7 +95,7 @@
                                 <target>
                                     <mkdir dir="${project.build.directory}/template/${zip.root.dir.path}" />
                                     <copy todir="${project.build.directory}/template/${zip.root.dir.path}">
-                                        <fileset dir="resources"/>
+                                        <fileset dir="resources" />
                                     </copy>
                                     <zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip">
                                         <fileset dir="${project.build.directory}/template" />
