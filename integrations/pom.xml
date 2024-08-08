@@ -29,6 +29,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <version>1.0.3-SNAPSHOT</version>
+    <url>http://wso2.org</url>
 
     <scm>
         <url>https://github.com/wso2-extensions/identity-integration-ui-templates.git</url>
@@ -51,43 +52,12 @@
     </distributionManagement>
 
     <modules>
-        <module>applications</module>
+        <module>applications/custom-application</module>
+        <module>applications/custom-protocol-application</module>
+        <module>applications/m2m-application</module>
+        <module>applications/mobile-application</module>
+        <module>applications/single-page-application</module>
+        <module>applications/traditional-web-application</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <configuration>
-                        <descriptors>
-                            <descriptor>zip.xml</descriptor>
-                        </descriptors>
-                        <appendAssemblyId>false</appendAssemblyId>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>make-assembly</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <preparationGoals>clean install</preparationGoals>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
