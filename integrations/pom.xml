@@ -85,6 +85,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
+                    <inherited>true</inherited>
                     <configuration>
                         <descriptors>
                             <descriptor>zip.xml</descriptor>
