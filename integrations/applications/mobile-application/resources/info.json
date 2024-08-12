@@ -1,6 +1,6 @@
 {
     "id": "mobile-applicatio",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Mobile Application",
     "description": "Applications developed to target mobile devices.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/mobile-template.svg",

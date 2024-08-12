@@ -1,7 +1,7 @@
 {
     "id": "custom-application",
     "name": "Standard-Based Applicatio",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Applications built using standard protocols.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/standard-based-template.svg",
     "displayOrder": 3,
