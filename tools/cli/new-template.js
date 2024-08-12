@@ -107,6 +107,12 @@ replaceContentInFile(
 );
 
 replaceContentInFile(
+    infoFileLocation,
+    /\$\{cli:template\.type\}/,
+    integrationTypePlu
+);
+
+replaceContentInFile(
     integrationParentPomLocation,
     /(<\/module>)([\s]+)(<module>.+<\/module>)([\s]+)(<\/modules>)/,
     `$1$2$3$2<module>${integrationTypePlu}/${integrationId}</module>$4$5`

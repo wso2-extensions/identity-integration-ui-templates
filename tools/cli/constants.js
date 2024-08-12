@@ -29,9 +29,19 @@ const INTEGRATION_PLURAL = {
     "connection": "connections"
 }
 
+const MAJOR = "major";
+const MINOR = "minor";
+const PATCH = "patch";
+
+const RELEASE_TYPES = [ MAJOR, MINOR, PATCH ];
+
 module.exports = { 
     APPLICATION,
     CONNECTION,
     ALLOWED_INTEGRATION_TYPES,
-    INTEGRATION_PLURAL
+    INTEGRATION_PLURAL,
+    MAJOR,
+    MINOR,
+    PATCH,
+    RELEASE_TYPES
 }

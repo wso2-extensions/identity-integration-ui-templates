@@ -1,3 +1,10 @@
 {
-    "id": "${cli:template.id}"
+    "id": "${cli:template.id}",
+    "version": "",
+    "description": "",
+    "image": "",
+    "displayOrder": 9999,
+    "category": "",
+    "tags": [],
+    "type": "${cli:template.type}"
 }

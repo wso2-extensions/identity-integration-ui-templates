@@ -18,6 +18,8 @@
 
 const fs = require("fs");
 const path = require("path");
+const { execSync } = require("child_process");
+const { MAJOR, MINOR, RELEASE_TYPES } = require("./constants");
 
 /**
  * Function to generate the absolute path.
@@ -78,8 +80,90 @@ function replaceContentInFile(filePath, regexPattern, newContent) {
     }
 }
 
+/**
+ * Executes a shell command and returns the command's output.
+ * 
+ * @param command - The shell command to execute.
+ * @param stdout - Standard output enabled or not.
+ * @param force - Whether the process should exit if it fails.
+ * @returns - The standard output (stdout) of the command or null.
+ */
+function execCommand(command, stout = false, force = true) {
+    try {
+        if (stout) {
+            return execSync(command).toString();
+        } else {
+            execSync(command).toString();
+
+            return null;
+        }
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        if (force) {
+            process.exit(1);
+        }
+    }
+}
+
+function versionDiff(oldVersion, newVersion, releaseType) {
+    const versionRegex = /^v([0-9]+)\.([0-9]+)\.([0-9]+)/;
+    const oldVersions = oldVersion.match(versionRegex);
+    const newVersions = newVersion.match(versionRegex);
+
+    let status = false;
+    let version = "v";
+
+    function compareVersion(oldVersionPart, newVersionPart) {
+        if (oldVersionPart === newVersionPart) {
+            return true
+        } else {
+            if (newVersionPart < oldVersionPart) {
+                console.error("Error: Having an issue to update the versions.");
+                process.exit(1);
+            } else {
+                return false;
+            }
+        }
+    }
+
+    if (oldVersions && newVersions) {
+        for (let i = 1; i < 4; i++) {
+            if (compareVersion(parseInt(oldVersions[i]), parseInt(newVersions[i]))) {
+                if (releaseType === RELEASE_TYPES[i-1]) {
+                    status = true;
+
+                    switch(releaseType) {
+                        case MAJOR:
+                            version += (parseInt(oldVersions[i]) + 1).toString() + ".0.0";
+                            break;
+                        case MINOR:
+                            version += (parseInt(oldVersions[i]) + 1).toString() + ".0";
+                            break;
+                        default:
+                            version += (parseInt(oldVersions[i]) + 1).toString();
+                            break;
+                    }
+                }
+                
+                if (i === 1) {
+                    version += oldVersions[i];
+                } else {
+                    version += "." + oldVersions[i];
+                }
+            }
+        }
+    } else {
+        console.error("Error: Couldn't read the versions.");
+        process.exit(1);
+    }
+
+    return [ status, version ];
+}
+
 module.exports = { 
     extractContentFromFile,
     replaceContentInFile,
-    getAbsolutePath
+    getAbsolutePath,
+    execCommand,
+    versionDiff
 };
