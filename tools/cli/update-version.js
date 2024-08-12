@@ -16,7 +16,7 @@
  * under the License.
  */
 
-const { execCommand, getAbsolutePath, versionDiff } = require("./utils");
+const { execCommand, getAbsolutePath, replaceContentInFile, versionDiff } = require("./utils");
 const fs = require("fs");
 
 const args = process.argv.slice(2);
@@ -62,6 +62,8 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
             /("version")([\s]*)(:)([\s]*)(".*")/,
             "$1$2$3$4\"v1.0.0\""
         );
+
+        return;
     }
 
     const diff = versionDiff(oldVersion, newVersion, releaseType);
@@ -78,8 +80,8 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
 changedFiles?.forEach((file) => {
     if (file && file.startsWith("integrations/")) {
         const paths = file.split("/");
-        const integrationPath = `${paths[1]/paths[2]}`;
-        const infoFilePath = `integrations/${integrationPath}/info.json`;
+        const integrationPath = `${paths[1]}/${paths[2]}`;
+        const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
         
         if (!finishedIntegrations.includes(integrationPath)) {
             const mainBranchInfoJSON = JSON.parse(execCommand(`git show ${remote}/main:${infoFilePath}`, true));

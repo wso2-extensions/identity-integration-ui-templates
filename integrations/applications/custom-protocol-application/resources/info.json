@@ -1,5 +1,6 @@
 {
     "id": "custom-protocol-application",
+    "version": "v1.0.0",
     "name": "Custom Application",
     "description": "Applications built using niche, legacy or custom protocols.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/custom-template.svg",
