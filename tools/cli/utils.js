@@ -88,9 +88,9 @@ function replaceContentInFile(filePath, regexPattern, newContent) {
  * @param force - Whether the process should exit if it fails.
  * @returns - The standard output (stdout) of the command or null.
  */
-function execCommand(command, stout = false, force = true) {
+function execCommand(command, stdout = false, force = true) {
     try {
-        if (stout) {
+        if (stdout) {
             return execSync(command).toString();
         } else {
             execSync(command).toString();
@@ -106,12 +106,12 @@ function execCommand(command, stout = false, force = true) {
 }
 
 function versionDiff(oldVersion, newVersion, releaseType) {
-    const versionRegex = /^v([0-9]+)\.([0-9]+)\.([0-9]+)/;
+    const versionRegex = /^([0-9]+)\.([0-9]+)\.([0-9]+)/;
     const oldVersions = oldVersion.match(versionRegex);
     const newVersions = newVersion.match(versionRegex);
 
     let status = false;
-    let version = "v";
+    let version = "";
 
     function compareVersion(oldVersionPart, newVersionPart) {
         if (oldVersionPart === newVersionPart) {

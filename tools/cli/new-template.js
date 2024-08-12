@@ -28,11 +28,11 @@ if (!args[0] || !args[1]) {
     process.exit(1);
 }
 
-const integrationTypeSin = args[0];
-const integrationTypePlu = INTEGRATION_PLURAL[integrationTypeSin];
+const integrationTypeSingularName = args[0];
+const integrationTypePluralName = INTEGRATION_PLURAL[integrationTypeSingularName];
 const integrationId = args[1];
 
-if (!ALLOWED_INTEGRATION_TYPES.includes(integrationTypeSin)) {
+if (!ALLOWED_INTEGRATION_TYPES.includes(integrationTypeSingularName)) {
     console.error("Error: The provided integration is not in the allowed list."
         + " Ref: tools/cli/constants.js => ALLOWED_INTEGRATION_TYPES");
     process.exit(1);
@@ -44,13 +44,13 @@ if (!integrationIdRegexValidation.test(integrationId)) {
     process.exit(1);
 }
 
-const integrationDir = getAbsolutePath(`integrations/${integrationTypePlu}/${integrationId}`);
-const integrationResourceDir = getAbsolutePath(`integrations/${integrationTypePlu}/${integrationId}/resources`);
+const integrationDir = getAbsolutePath(`integrations/${integrationTypePluralName}/${integrationId}`);
+const integrationResourceDir = getAbsolutePath(`integrations/${integrationTypePluralName}/${integrationId}/resources`);
 
 if (!fs.existsSync(integrationResourceDir)) {
     fs.mkdirSync(integrationResourceDir, { recursive: true });
 } else {
-    console.error("Error: Integration is already exists.");
+    console.error("Error: Integration already exists.");
     process.exit(1);
 }
 
@@ -64,9 +64,9 @@ fs.copyFileSync(metadataFilePath, path.join(integrationResourceDir, "metadata.js
 fs.copyFileSync(templateFilePath, path.join(integrationResourceDir, "template.json"));
 fs.copyFileSync(pomFilePath, path.join(integrationDir, "pom.xml"));
 
-const integrationPomLocation = `integrations/${integrationTypePlu}/${integrationId}/pom.xml`;
+const integrationPomLocation = `integrations/${integrationTypePluralName}/${integrationId}/pom.xml`;
 const integrationParentPomLocation = `integrations/pom.xml`;
-const infoFileLocation = `integrations/${integrationTypePlu}/${integrationId}/resources/info.json`;
+const infoFileLocation = `integrations/${integrationTypePluralName}/${integrationId}/resources/info.json`;
 
 replaceContentInFile(
     integrationPomLocation,
@@ -97,7 +97,7 @@ replaceContentInFile(
 replaceContentInFile(
     integrationPomLocation,
     /\$\{cli:template\.type\}/,
-    integrationTypePlu
+    integrationTypePluralName
 );
 
 replaceContentInFile(
@@ -109,13 +109,13 @@ replaceContentInFile(
 replaceContentInFile(
     infoFileLocation,
     /\$\{cli:template\.type\}/,
-    integrationTypePlu
+    integrationTypePluralName
 );
 
 replaceContentInFile(
     integrationParentPomLocation,
     /(<\/module>)([\s]+)(<module>.+<\/module>)([\s]+)(<\/modules>)/,
-    `$1$2$3$2<module>${integrationTypePlu}/${integrationId}</module>$4$5`
+    `$1$2$3$2<module>${integrationTypePluralName}/${integrationId}</module>$4$5`
 );
 
 console.log(`Success: Created the new integration: ${integrationId}`);
