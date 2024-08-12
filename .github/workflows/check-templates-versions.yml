@@ -14,7 +14,6 @@ concurrency:
 
 jobs:
   check-versions:
-    name: 🚧 Templates Version Check
     runs-on: ubuntu-latest
     strategy:
       matrix:
