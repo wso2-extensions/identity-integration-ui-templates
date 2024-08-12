@@ -53,8 +53,6 @@ if (execCommand(`git merge-base HEAD ${remote}/main`, true) !== execCommand(`git
 
 const changedFiles = execCommand(`git diff --name-only ${remote}/main`, true)?.split("\n");
 
-const finishedIntegrations = [];
-
 function writeVersion(oldVersion, newVersion, path, releaseType) {
     if (!oldVersion && !newVersion) {
         replaceContentInFile(
@@ -62,6 +60,7 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
             /("version")([\s]*)(:)([\s]*)(".*")/,
             "$1$2$3$4\"1.0.0\""
         );
+        console.log(`Success: Version of ${path} is updated to 1.0.0`);
 
         return;
     }
@@ -74,8 +73,11 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
             /("version")([\s]*)(:)([\s]*)(".*")/,
             `$1$2$3$4"${diff[1]}"`
         );
+        console.log(`Success: Version of ${path} is updated to ${diff[1]}`);
     }
 }
+
+const finishedIntegrations = [];
 
 changedFiles?.forEach((file) => {
     if (file && file.startsWith("integrations/")) {
@@ -104,6 +106,8 @@ changedFiles?.forEach((file) => {
             } else {
                 writeVersion(null, null, infoFilePath, updateType);
             }
+
+            finishedIntegrations.push(integrationPath);
         }
     }
 });

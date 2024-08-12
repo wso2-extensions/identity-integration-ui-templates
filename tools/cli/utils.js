@@ -137,12 +137,14 @@ function versionDiff(oldVersion, newVersion, releaseType) {
                             version += (parseInt(oldVersions[i]) + 1).toString() + ".0.0";
                             break;
                         case MINOR:
-                            version += (parseInt(oldVersions[i]) + 1).toString() + ".0";
+                            version += "." + (parseInt(oldVersions[i]) + 1).toString() + ".0";
                             break;
                         default:
-                            version += (parseInt(oldVersions[i]) + 1).toString();
+                            version += "." + (parseInt(oldVersions[i]) + 1).toString();
                             break;
                     }
+
+                    break;
                 }
                 
                 if (i === 1) {
