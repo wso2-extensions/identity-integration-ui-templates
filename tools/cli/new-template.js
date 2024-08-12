@@ -50,7 +50,7 @@ const integrationResourceDir = getAbsolutePath(`integrations/${integrationTypePl
 if (!fs.existsSync(integrationResourceDir)) {
     fs.mkdirSync(integrationResourceDir, { recursive: true });
 } else {
-    console.error("Error: Integration is already exists.");
+    console.error("Error: Integration already exists.");
     process.exit(1);
 }
 
