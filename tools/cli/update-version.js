@@ -60,7 +60,7 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
         replaceContentInFile(
             path,
             /("version")([\s]*)(:)([\s]*)(".*")/,
-            "$1$2$3$4\"v1.0.0\""
+            "$1$2$3$4\"1.0.0\""
         );
 
         return;

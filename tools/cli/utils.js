@@ -106,12 +106,12 @@ function execCommand(command, stout = false, force = true) {
 }
 
 function versionDiff(oldVersion, newVersion, releaseType) {
-    const versionRegex = /^v([0-9]+)\.([0-9]+)\.([0-9]+)/;
+    const versionRegex = /^([0-9]+)\.([0-9]+)\.([0-9]+)/;
     const oldVersions = oldVersion.match(versionRegex);
     const newVersions = newVersion.match(versionRegex);
 
     let status = false;
-    let version = "v";
+    let version = "";
 
     function compareVersion(oldVersionPart, newVersionPart) {
         if (oldVersionPart === newVersionPart) {
