@@ -41,31 +41,19 @@ jobs:
 
           # Check for "Success:.*" pattern.
           if [[ "$output" =~ Success:.* ]]; then
-            echo -e "\n❌ Several integration template changes have been detected, but the versions for these templates have not been updated.\n"
-            echo -e "\nRun the command node tools/cli/update-version.js <<RELEASE_TYPE>> to update the template versions.\n"
-            echo -e "\nSee the README.md for more details.\n"
-
-            curl -X POST \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d '{"state": "failure", "description": "Several integration template changes have been detected, but the versions for these templates have not been updated."}' \
-              "https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }}"
+            echo -e "\n❌ Several integration template changes have been detected, but the versions for these templates have not been updated."
+            echo -e "\nRun the command node tools/cli/update-version.js <<RELEASE_TYPE>> to update the template versions."
+            echo -e "\nSee the README.md for more details."
 
             exit 1
           fi
 
           # Check for "Error:.*" pattern
           if [[ "$output" =~ Error:.* ]]; then
-            echo -e "\n❌ An error occurred while running the version-check script.\n"
+            echo -e "\n❌ An error occurred while running the version-check script."
             echo "$output"
-
-            curl -X POST \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              -d '{"state": "success", "description": "Templates version check passed."}' \
-              "https://api.github.com/repos/${{ github.repository }}/statuses/${{ github.sha }}"
 
             exit 1
           fi
 
-          echo -e "\n✅ Templates version check passed.\n"
+          echo -e "\n✅ Templates version check passed."
