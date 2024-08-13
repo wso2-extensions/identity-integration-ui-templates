@@ -78,9 +78,10 @@ function writeVersion(oldVersion, newVersion, path, releaseType) {
 }
 
 const finishedIntegrations = [];
+const changedFileRegex = /^integrations\/[^/]+\/.*$/;
 
 changedFiles?.forEach((file) => {
-    if (file && file.startsWith("integrations/")) {
+    if (file && changedFileRegex.test(file)) {
         const paths = file.split("/");
         const integrationPath = `${paths[1]}/${paths[2]}`;
         const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
