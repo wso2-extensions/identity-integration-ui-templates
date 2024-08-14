@@ -23,7 +23,7 @@
         <version>1.4</version>
     </parent>
     
-    <name>Integration Templates - Aggregator Pom test</name>
+    <name>Integration Templates - Aggregator Pom</name>
     <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
     <artifactId>integration-templates</artifactId>
     <modelVersion>4.0.0</modelVersion>
