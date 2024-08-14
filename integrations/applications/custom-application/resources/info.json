@@ -2,7 +2,7 @@
     "id": "custom-application",
     "name": "Standard-Based Application",
     "version": "1.0.0",
-    "description": "Applications built using standard protocols.",
+    "description": "Applications built using standard protocols. test",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/standard-based-template.svg",
     "displayOrder": 3,
     "category": "DEFAULT",
