@@ -1,9 +1,20 @@
 {
-    "id": "salesforce",
-    "description": "",
-    "image": "",
-    "displayOrder": 9999,
-    "category": "",
-    "tags": [],
-    "type": "applications"
+	"id": "salesforce",
+	"version": "1.0.8-SNAPSHOT",
+	"name": "Salesforce",
+	"description": "Customer relationship management (CRM) platform that enables businesses to manage their sales, marketing, and customer service operations efficiently.",
+	"image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/salesforce.png",
+	"displayOrder": 9999,
+	"tags": [
+		"SAML",
+		"SSO"
+	],
+	"category": "SSO-INTEGRATION",
+	"type": "applications",
+	"customAttributes": [
+		{
+			"key": "featureStatus",
+			"value": "new"
+		}
+	]
 }

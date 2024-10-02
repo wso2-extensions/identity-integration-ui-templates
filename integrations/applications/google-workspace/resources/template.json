@@ -1,11 +1,11 @@
 {
     "payload": {
-        "name": "Salesforce",
+        "name": "Google Workspace",
         "advancedConfigurations": {
             "discoverableByEndUsers": true,
             "skipLogoutConsent": true
         },
-        "imageUrl": "${clientOrigin}/${appBaseNameWithoutTenant}/resources/applications/assets/images/illustrations/salesforce.png",
+        "imageUrl": "${clientOrigin}/${appBaseNameWithoutTenant}/resources/connections/assets/images/logos/google.svg",
         "accessUrl": "${serverOrigin}/t/${tenantDomain}/samlsso?spEntityID=${inboundProtocolConfiguration.saml.manualConfiguration.issuer}",
         "authenticationSequence": {
             "type": "DEFAULT",
@@ -52,9 +52,9 @@
         "inboundProtocolConfiguration": {
             "saml": {
                 "manualConfiguration": {
-                    "issuer": "https://salesforce.com/${issuerId}",
+                    "issuer": "google.com/a/${domainName}",
                     "assertionConsumerUrls": [
-                        "https://login.salesforce.com"
+                        "https://www.google.com/a/${domainName}/acs"
                     ],
                     "defaultAssertionConsumerUrl": "${inboundProtocolConfiguration.saml.manualConfiguration.assertionConsumerUrls.[0]}",
                     "responseSigning": {
@@ -66,7 +66,7 @@
                         "assertion": {
                             "digestAlgorithm": "http://www.w3.org/2001/04/xmlenc#sha256",
                             "encryption": {
-                                "enabled": true,
+                                "enabled": false,
                                 "assertionEncryptionAlgorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
                                 "keyEncryptionAlgorithm": "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
                             }
@@ -76,13 +76,17 @@
                             "HTTP_POST"
                         ]
                     },
+                    "attributeProfile": {
+                            "enabled": true,
+                            "alwaysIncludeAttributesInResponse": true
+                    },
                     "singleLogoutProfile": {
                         "enabled": true,
                         "logoutResponseUrl": "",
                         "logoutMethod": "FRONTCHANNEL_HTTP_REDIRECT"
                     },
                     "requestValidation": {
-                        "enableSignatureValidation": true
+                        "enableSignatureValidation": false
                     }
                 }
             }
