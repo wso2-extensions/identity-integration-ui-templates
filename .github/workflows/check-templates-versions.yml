@@ -5,8 +5,6 @@ name: 🚧 Templates Version Check
 on:
   pull_request:
     branches: [ main ]
-    paths:
-      - "integrations/**/*"
 
 concurrency:
   group: pr-builder-${{ github.ref }}
@@ -14,6 +12,7 @@ concurrency:
 
 jobs:
   check-versions:
+    name: 🚧 Templates Version Check
     runs-on: ubuntu-latest
     strategy:
       matrix:

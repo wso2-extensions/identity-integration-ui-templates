@@ -86,19 +86,22 @@ function replaceContentInFile(filePath, regexPattern, newContent) {
  * @param command - The shell command to execute.
  * @param stdout - Standard output enabled or not.
  * @param force - Whether the process should exit if it fails.
+ * @param showError - Whether error messages should be shown in logs.
  * @returns - The standard output (stdout) of the command or null.
  */
-function execCommand(command, stdout = false, force = true) {
+function execCommand(command, stdout = false, force = true, showError = true) {
     try {
         if (stdout) {
             return execSync(command).toString();
         } else {
-            execSync(command).toString();
+            execSync(command);
 
             return null;
         }
     } catch (error) {
-        console.error(`Error: ${error.message}`);
+        if (showError) {
+            console.error(`Error: ${error.message}`);
+        }
         if (force) {
             process.exit(1);
         }
