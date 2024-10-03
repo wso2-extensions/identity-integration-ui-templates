@@ -58,6 +58,9 @@
         <module>applications/mobile-application</module>
         <module>applications/single-page-application</module>
         <module>applications/traditional-web-application</module>
+        <module>applications/salesforce</module>
+        <module>applications/google-workspace</module>
+        <module>applications/microsoft-365</module>
     </modules>
 
     <build>
