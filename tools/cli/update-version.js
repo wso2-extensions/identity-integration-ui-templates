@@ -87,7 +87,10 @@ changedFiles?.forEach((file) => {
         const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
         
         if (!finishedIntegrations.includes(integrationPath)) {
-            const mainBranchInfoJSON = JSON.parse(execCommand(`git show ${remote}/main:${infoFilePath}`, true));
+            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, false, false, false);
+            if (mainBranchInfoJSON) {
+                mainBranchInfoJSON = JSON.parse(mainBranchInfoJSON);
+            }
             const localInfoJSON = JSON.parse(fs.readFileSync(getAbsolutePath(infoFilePath)));
 
             if (!localInfoJSON?.version && mainBranchInfoJSON?.version) {
@@ -104,7 +107,7 @@ changedFiles?.forEach((file) => {
                     infoFilePath,
                     updateType
                 );
-            } else {
+            } else if ((localInfoJSON?.version && localInfoJSON?.version != "1.0.0") || !localInfoJSON) {
                 writeVersion(null, null, infoFilePath, updateType);
             }
 
