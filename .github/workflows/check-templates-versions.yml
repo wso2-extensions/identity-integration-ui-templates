@@ -5,8 +5,6 @@ name: 🚧 Templates Version Check
 on:
   pull_request:
     branches: [ main ]
-    paths:
-      - "integrations/**/*"
 
 concurrency:
   group: pr-builder-${{ github.ref }}
