@@ -1,10 +1,10 @@
 {
     "id": "microsoft-365",
-    "version": "1.0.8",
+    "version": "1.0.0",
     "name": "Microsoft 365",
     "description": "Microsoft 365 is a product family of productivity software, collaboration and cloud-based services owned by Microsoft.",
     "image": "${CONSOLE_BASE_URL}/resources/connections/assets/images/logos/microsoft.svg",
-    "displayOrder": 3,
+    "displayOrder": 2,
     "tags": [
         "SAML",
         "SSO"
