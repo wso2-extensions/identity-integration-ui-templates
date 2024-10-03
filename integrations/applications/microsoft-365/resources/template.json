@@ -50,8 +50,8 @@
                         ]
                     },
                     "attributeProfile": {
-                            "enabled": true,
-                            "alwaysIncludeAttributesInResponse": true
+                        "enabled": true,
+                        "alwaysIncludeAttributesInResponse": true
                     },
                     "singleLogoutProfile": {
                         "enabled": true,
