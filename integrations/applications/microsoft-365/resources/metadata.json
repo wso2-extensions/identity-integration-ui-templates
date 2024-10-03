@@ -101,17 +101,6 @@
                     ]
                 },
                 {
-                    "id": "isApplicationSharable",
-                    "aria-label": "Allow sharing with organizations",
-                    "name": "isApplicationSharable",
-                    "label": "Allow sharing with organizations",
-                    "type": "checkbox",
-                    "required": false,
-                    "hidden": true,
-                    "dataComponentId": "microsoft-365-create-wizard-share",
-                    "helperText": "If enabled, it will share this application with all or any selected organizations that belong to your root organization."
-                },
-                {
                     "id": "default-assertion-consumer-url",
                     "ariaLabel": "Default Assertion Consumer URL",
                     "name": "inboundProtocolConfiguration.saml.manualConfiguration.defaultAssertionConsumerUrl",
