@@ -1,0 +1,212 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "slack-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "assertion-consumer-url",
+                    "ariaLabel": "Assertion Consumer URL",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.assertionConsumerUrls.[0]",
+                    "label": "Assertion Consumer URL",
+                    "type": "text",
+                    "required": false,
+                    "hidden": true,
+                    "dataComponentId": "slack-wizard-form-assertion-consumer-url",
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "domainName"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "domain-name",
+                    "aria-label": "Domain name",
+                    "name": "domainName",
+                    "label": "Domain name",
+                    "type": "text",
+                    "placeholder": "your-workspace-domain",
+                    "helperText": "Domain name of the Slack workspace.",
+                    "required": true,
+                    "dataComponentId": "slack-create-wizard-domain-name",
+                    "hidden": false,
+                    "handlers": [
+                        {
+                            "name": "disableProperty",
+                            "type": "submission"
+                        }
+                    ]
+                },
+                {
+                    "id": "issuer-name",
+                    "aria-label": "Issuer Name",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.issuer",
+                    "label": "Issuer Name",
+                    "type": "text",
+                    "helperText": "Unique identifier for the Slack service provider on the IdP side.",
+                    "required": true,
+                    "placeholder": "https://slack.com",
+                    "dataComponentId": "slack-create-wizard-issuer-name"
+                },
+                {
+                    "id": "access-url",
+                    "aria-label": "Access URL",
+                    "name": "accessUrl",
+                    "label": "Access URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "slack-create-wizard-access-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "inboundProtocolConfiguration.saml.manualConfiguration.issuer"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "tenantDomain"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "serverOrigin"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "slack-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "default-assertion-consumer-url",
+                    "ariaLabel": "Default Assertion Consumer URL",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.defaultAssertionConsumerUrl",
+                    "label": "Default Assertion Consumer URL",
+                    "type": "text",
+                    "required": false,
+                    "hidden": true,
+                    "dataComponentId": "slack-wizard-form-default-assertion-consumer-url",
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "inboundProtocolConfiguration.saml.manualConfiguration.assertionConsumerUrls.[0]"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": ""
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-inbound-saml-form-issuer",
+                    "application-edit-inbound-saml-form-application-qualifier",
+                    "application-edit-inbound-saml-form-idp-entity-id-alias",
+                    "application-edit-inbound-saml-form-sign-saml-responses",
+                    "application-edit-inbound-saml-form-bindings",
+                    "application-edit-inbound-saml-form-signature-validation-for-artifact-binding",
+                    "application-edit-inbound-saml-form-name-id-format",
+                    "application-edit-inbound-saml-form-audience",
+                    "application-edit-inbound-saml-form-recipient",
+                    "application-edit-inbound-saml-form-attribute-profile-heading",
+                    "application-edit-inbound-saml-form-enable-attribute-profile",
+                    "application-edit-inbound-saml-form-slo-heading",
+                    "application-edit-inbound-saml-form-enable-slo",
+                    "application-edit-inbound-saml-form-slo-logout-method",
+                    "application-edit-inbound-saml-form-slo-logout-response-url",
+                    "application-edit-inbound-saml-form-slo-logout-request-url",
+                    "application-edit-inbound-saml-form-idp-initiated-slo-heading",
+                    "application-edit-inbound-saml-form-enable-idp-initiated-slo",
+                    "application-edit-inbound-saml-form-slo-return-to-urls",
+                    "application-edit-inbound-saml-form-assertion-query-profile"
+                ]
+            },
+            {
+                "id": "user-attributes",
+                "hiddenComponents": [
+                    "application-edit-user-attributes-linked-accounts",
+                    "application-edit-user-attributes--validate-linked-local-accounts",
+                    "application-edit-user-attributes-include-tenant-domain",
+                    "application-edit-user-attributes-include-user-domain"
+                ]
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "shared-access"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}
