@@ -110,7 +110,12 @@
                     "singleSignOnProfile": {
                         "enableIdpInitiatedSingleSignOn": true,
                         "assertion": {
-                            "nameIdFormat": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
+                            "nameIdFormat": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+                            "digestAlgorithm": "http://www.w3.org/2001/04/xmlenc#sha256",
+                            "encryption": {
+                                "assertionEncryptionAlgorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
+                                "keyEncryptionAlgorithm": "http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
+                            }
                         },
                         "bindings": [ "HTTP_POST" ]
                     },
