@@ -107,7 +107,7 @@ changedFiles?.forEach((file) => {
                     infoFilePath,
                     updateType
                 );
-            } else if ((localInfoJSON?.version && localInfoJSON?.version != "1.0.0") || !localInfoJSON) {
+            } else if (localInfoJSON?.version != "1.0.0") {
                 writeVersion(null, null, infoFilePath, updateType);
             }
 

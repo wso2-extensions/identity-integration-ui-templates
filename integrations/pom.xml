@@ -61,6 +61,8 @@
         <module>applications/salesforce</module>
         <module>applications/google-workspace</module>
         <module>applications/microsoft-365</module>
+        <module>applications/zoom</module>
+        <module>applications/slack</module>
     </modules>
 
     <build>
