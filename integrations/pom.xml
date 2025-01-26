@@ -63,6 +63,7 @@
         <module>applications/microsoft-365</module>
         <module>applications/zoom</module>
         <module>applications/slack</module>
+        <module>notification-providers/firebase</module>
     </modules>
 
     <build>
