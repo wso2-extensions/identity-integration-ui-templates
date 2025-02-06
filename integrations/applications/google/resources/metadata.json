@@ -132,7 +132,7 @@
                 }
             ]
         },
-        "guide": [ "##### Name\n***\n***\nA unique name to identify your google workspace SSO application.\n***\nE.g., Google Workspace\n***\n***\n***\n***\n##### Entity ID\n***\n***\nA unique URL dynamically generated for your Google SAML SSO profile. To locate it, follow [Google's guide](https://support.google.com/a/answer/12032922?hl=en&ref_topic=7579248&sjid=3736947215943977003-AP#create_profile) on creating a SAML SSO profile. Once completed, copy the `Entity ID` from the `SP Details` section of the specific SAML SSO profile.\n***\n> When creating the SAML SSO profile on Google's side, you only need to provide a name for the profile initially. The `IDP details` can be added later by following our `Quick Start` guide, which appears after creating this application.\n<!--rehype:type=info&title=Note-->" ]
+        "guide": [ "##### Name\n***\n***\nA unique name to identify your google workspace SSO application.\n***\nE.g., Google Workspace\n***\n***\n***\n***\n##### Entity ID\n***\n***\nA unique URL dynamically generated for your Google SAML SSO profile. To find it, follow [Google's guide](https://support.google.com/a/answer/12032922?hl=en&ref_topic=7579248&sjid=3736947215943977003-AP#create_profile) on creating a SAML SSO profile. Once completed, copy the `Entity ID` from the `SP Details` section of the specific SAML SSO profile.\n***\n> When setting up the SAML SSO profile in Google, you only need to provide a name for the profile initially. You can add the `IDP details` later by following our `Quick Start` guide, which will appear after the application is created.\n<!--rehype:type=info&title=Note-->" ]
     },
     "edit": {
         "tabs": [
