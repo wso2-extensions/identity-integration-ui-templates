@@ -59,12 +59,11 @@
         <module>applications/single-page-application</module>
         <module>applications/traditional-web-application</module>
         <module>applications/salesforce</module>
-        <module>applications/google-workspace</module>
+        <module>applications/google</module>
         <module>applications/microsoft-365</module>
         <module>applications/zoom</module>
         <module>applications/slack</module>
         <module>notification-providers/firebase</module>
-        <module>applications/google-workspace-v2</module>
     </modules>
 
     <build>

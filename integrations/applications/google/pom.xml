@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2024, WSO2 LLC. (http://www.wso2.com).
+  ~ Copyright (c) 2025, WSO2 LLC. (http://www.wso2.com).
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -24,8 +24,8 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     
-    <name>google-workspace</name>
-    <artifactId>org.wso2.carbon.identity.integration.ui.templates.applications.google-workspace</artifactId>
+    <name>google-workspace-v2</name>
+    <artifactId>org.wso2.carbon.identity.integration.ui.templates.applications.google</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <url>http://wso2.org</url>
