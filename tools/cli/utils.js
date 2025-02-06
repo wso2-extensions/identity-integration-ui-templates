@@ -165,10 +165,22 @@ function versionDiff(oldVersion, newVersion, releaseType) {
     return [ status, version ];
 }
 
+/**
+ * Check whether the given version is a major release.
+ * 
+ * @param version - Version to check.
+ * @returns True if the version is a major release.
+ */
+function isMajorRelease(version) {
+    const versionRegex = /^([1-9]{1}[0-9]*)\.([0-9]+)\.([0-9]+)/
+    return versionRegex.test(version);
+}
+
 module.exports = { 
     extractContentFromFile,
     replaceContentInFile,
     getAbsolutePath,
     execCommand,
-    versionDiff
+    versionDiff,
+    isMajorRelease
 };

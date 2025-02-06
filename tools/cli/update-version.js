@@ -16,7 +16,7 @@
  * under the License.
  */
 
-const { execCommand, getAbsolutePath, replaceContentInFile, versionDiff } = require("./utils");
+const { execCommand, getAbsolutePath, replaceContentInFile, versionDiff, isMajorRelease } = require("./utils");
 const fs = require("fs");
 
 const args = process.argv.slice(2);
@@ -110,7 +110,7 @@ changedFiles?.forEach((file) => {
                     infoFilePath,
                     updateType
                 );
-            } else if (localInfoJSON && localInfoJSON?.version != "1.0.0") {
+            } else if (localInfoJSON && !isMajorRelease(localInfoJSON?.version)) {
                 writeVersion(null, null, infoFilePath, updateType);
             }
 
