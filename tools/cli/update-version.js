@@ -91,23 +91,26 @@ changedFiles?.forEach((file) => {
             if (mainBranchInfoJSON) {
                 mainBranchInfoJSON = JSON.parse(mainBranchInfoJSON);
             }
-            const localInfoJSON = JSON.parse(fs.readFileSync(getAbsolutePath(infoFilePath)));
+            let localInfoJSON = null;
+            if (fs.existsSync(getAbsolutePath(infoFilePath))) {
+                localInfoJSON = JSON.parse(fs.readFileSync(getAbsolutePath(infoFilePath)));
+            }
 
-            if (!localInfoJSON?.version && mainBranchInfoJSON?.version) {
+            if (localInfoJSON && !localInfoJSON.version && mainBranchInfoJSON?.version) {
                 writeVersion(
                     mainBranchInfoJSON?.version,
                     mainBranchInfoJSON?.version,
                     infoFilePath,
                     updateType
                 );
-            } else if (localInfoJSON?.version && mainBranchInfoJSON?.version) {
+            } else if (localInfoJSON && localInfoJSON.version && mainBranchInfoJSON?.version) {
                 writeVersion(
                     mainBranchInfoJSON?.version,
                     localInfoJSON?.version,
                     infoFilePath,
                     updateType
                 );
-            } else if (localInfoJSON?.version != "1.0.0") {
+            } else if (localInfoJSON && localInfoJSON?.version != "1.0.0") {
                 writeVersion(null, null, infoFilePath, updateType);
             }
 
