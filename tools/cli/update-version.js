@@ -87,7 +87,7 @@ changedFiles?.forEach((file) => {
         const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
         
         if (!finishedIntegrations.includes(integrationPath)) {
-            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, false, false, false);
+            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, true, false, false);
             if (mainBranchInfoJSON) {
                 mainBranchInfoJSON = JSON.parse(mainBranchInfoJSON);
             }
