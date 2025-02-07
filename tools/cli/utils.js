@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2024-2025, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -165,10 +165,22 @@ function versionDiff(oldVersion, newVersion, releaseType) {
     return [ status, version ];
 }
 
+/**
+ * Check whether the given version is a major release.
+ * 
+ * @param version - Version to check.
+ * @returns True if the version is a major release.
+ */
+function isMajorRelease(version) {
+    const versionRegex = /^([1-9]{1}[0-9]*)\.([0-9]+)\.([0-9]+)/
+    return versionRegex.test(version);
+}
+
 module.exports = { 
     extractContentFromFile,
     replaceContentInFile,
     getAbsolutePath,
     execCommand,
-    versionDiff
+    versionDiff,
+    isMajorRelease
 };

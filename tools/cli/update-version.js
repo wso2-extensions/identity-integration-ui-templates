@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024, WSO2 LLC. (https://www.wso2.com).
+ * Copyright (c) 2024-2025, WSO2 LLC. (https://www.wso2.com).
  *
  * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,7 +16,7 @@
  * under the License.
  */
 
-const { execCommand, getAbsolutePath, replaceContentInFile, versionDiff } = require("./utils");
+const { execCommand, getAbsolutePath, replaceContentInFile, versionDiff, isMajorRelease } = require("./utils");
 const fs = require("fs");
 
 const args = process.argv.slice(2);
@@ -87,27 +87,30 @@ changedFiles?.forEach((file) => {
         const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
         
         if (!finishedIntegrations.includes(integrationPath)) {
-            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, false, false, false);
+            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, true, false, false);
             if (mainBranchInfoJSON) {
                 mainBranchInfoJSON = JSON.parse(mainBranchInfoJSON);
             }
-            const localInfoJSON = JSON.parse(fs.readFileSync(getAbsolutePath(infoFilePath)));
+            let localInfoJSON = null;
+            if (fs.existsSync(getAbsolutePath(infoFilePath))) {
+                localInfoJSON = JSON.parse(fs.readFileSync(getAbsolutePath(infoFilePath)));
+            }
 
-            if (!localInfoJSON?.version && mainBranchInfoJSON?.version) {
+            if (localInfoJSON && !localInfoJSON.version && mainBranchInfoJSON?.version) {
                 writeVersion(
                     mainBranchInfoJSON?.version,
                     mainBranchInfoJSON?.version,
                     infoFilePath,
                     updateType
                 );
-            } else if (localInfoJSON?.version && mainBranchInfoJSON?.version) {
+            } else if (localInfoJSON && localInfoJSON.version && mainBranchInfoJSON?.version) {
                 writeVersion(
                     mainBranchInfoJSON?.version,
                     localInfoJSON?.version,
                     infoFilePath,
                     updateType
                 );
-            } else if (localInfoJSON?.version != "1.0.0") {
+            } else if (localInfoJSON && !isMajorRelease(localInfoJSON?.version)) {
                 writeVersion(null, null, infoFilePath, updateType);
             }
 

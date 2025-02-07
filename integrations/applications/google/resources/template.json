@@ -52,9 +52,9 @@
         "inboundProtocolConfiguration": {
             "saml": {
                 "manualConfiguration": {
-                    "issuer": "google.com/a/${domainName}",
+                    "issuer": "",
                     "assertionConsumerUrls": [
-                        "https://www.google.com/a/${domainName}/acs"
+                        "${inboundProtocolConfiguration.saml.manualConfiguration.issuer}/acs"
                     ],
                     "defaultAssertionConsumerUrl": "${inboundProtocolConfiguration.saml.manualConfiguration.assertionConsumerUrls.[0]}",
                     "responseSigning": {
