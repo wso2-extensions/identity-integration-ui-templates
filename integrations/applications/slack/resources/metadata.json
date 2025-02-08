@@ -213,7 +213,8 @@
                     "application-edit-inbound-saml-form-idp-initiated-slo-heading",
                     "application-edit-inbound-saml-form-enable-idp-initiated-slo",
                     "application-edit-inbound-saml-form-slo-return-to-urls",
-                    "application-edit-inbound-saml-form-assertion-query-profile"
+                    "application-edit-inbound-saml-form-assertion-query-profile",
+                    "application-edit-inbound-saml-form-attribute-name-format"
                 ]
             },
             {

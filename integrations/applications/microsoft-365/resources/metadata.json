@@ -148,7 +148,8 @@
                     "application-edit-inbound-saml-form-signature-validation-for-artifact-binding",
                     "application-edit-inbound-saml-form-audience",
                     "application-edit-inbound-saml-form-recipient",
-                    "application-edit-inbound-saml-form-assertion-query-profile"
+                    "application-edit-inbound-saml-form-assertion-query-profile",
+                    "application-edit-inbound-saml-form-attribute-name-format"
                 ]
             },
             {
