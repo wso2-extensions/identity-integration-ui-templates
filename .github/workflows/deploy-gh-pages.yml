@@ -7,9 +7,9 @@ on:
     inputs:
       basePath:
         description: |
-          The base path to deploy the sandbox to. Default is "sandbox" (https://wso2-extensions.github.io/identity-integration-ui-templates/sandbox/).
+          The base path to deploy the sandbox to. Default is "identity-integration-ui-templates" (https://wso2-extensions.github.io/identity-integration-ui-templates).
           Note: Do not include a leading or trailing slash.
-        default: "identity-integration-ui-templates/sandbox"
+        default: "identity-integration-ui-templates"
         type: string
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages.
@@ -61,12 +61,12 @@ jobs:
 
       - name: 🧩 Install Dependencies
         run: |
-          cd sandbox
-          pnpm install
+          cd tools/sandbox
+          pnpm bootstrap
 
       - name: 🏗️ Build Project
         run: |
-          cd sandbox
+          cd tools/sandbox
           export BASE_PATH="/${{ github.event.inputs.basePath }}"
           pnpm build
 
@@ -76,7 +76,7 @@ jobs:
       - name: 🌩 Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: sandbox/apps/markdown-editor/dist
+          path: ./tools/sandbox/apps/markdown-editor/dist
 
       - name: 🔥 Deploy to GitHub Pages
         uses: actions/deploy-pages@v1

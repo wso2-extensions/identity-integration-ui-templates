@@ -1,0 +1,57 @@
+# This workflow will verify if the currently changed templates have updated versions.
+
+name: 🚧 Templates Version Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: pr-builder-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-versions:
+    name: 🚧 Templates Version Check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [lts/*]
+    steps:
+      - name: ⬇️ Checkout
+        id: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup node
+        id: setup-node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 🔍 Version Check
+        id: check-version
+        run: |
+          git remote add upstream https://github.com/wso2-extensions/identity-integration-ui-templates.git
+
+          output=$(node tools/cli/update-version.js)
+
+          # Check for "Success:.*" pattern.
+          if [[ "$output" =~ Success:.* ]]; then
+            echo -e "\n❌ Several integration template changes have been detected, but the versions for these templates have not been updated."
+            echo -e "\nRun the command node tools/cli/update-version.js <<RELEASE_TYPE>> to update the template versions."
+            echo -e "\nSee the README.md for more details."
+
+            exit 1
+          fi
+
+          # Check for "Error:.*" pattern
+          if [[ "$output" =~ Error:.* ]]; then
+            echo -e "\n❌ An error occurred while running the version-check script."
+            echo "$output"
+
+            exit 1
+          fi
+
+          echo -e "\n✅ Templates version check passed."

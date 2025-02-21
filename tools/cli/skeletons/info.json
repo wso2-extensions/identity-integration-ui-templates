@@ -1,0 +1,11 @@
+{
+    "id": "${cli:template.id}",
+    "version": "",
+    "name": "",
+    "description": "",
+    "image": "",
+    "displayOrder": 9999,
+    "category": "",
+    "tags": [],
+    "type": "${cli:template.type}"
+}
