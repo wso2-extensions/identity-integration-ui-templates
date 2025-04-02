@@ -1,0 +1,33 @@
+{
+    "id": "mcp-client-application",
+    "version": "1.0.0",
+    "name": "MCP Client Application",
+    "description": "An application that needs a secure connection to an MCP Server.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/mcp-template-illustration.svg",
+    "displayOrder": -1,
+    "category": "DEFAULT",
+    "tags": [
+        "Default",
+        "OAuth2"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "supportedTechnologies",
+            "value": [
+                {
+                    "displayName": "OAuth2",
+                    "logo": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/oauth2.png"
+                }
+            ]
+        },
+        {
+            "key": "featureStatus",
+            "value": "new"
+        },
+        {
+            "key": "useNewCreateWizard",
+            "value": true
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "mcp-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://my-app.io/callback",
+                    "dataComponentId": "mcp-create-wizard-callback-url"
+                }
+            ]
+        }
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-oidc-client-secret",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-pushed-authorization-requests",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-request-object",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-hybrid-flow",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-access-token-type",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-access-token-binding-type",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-expiry-time",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-audience",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-method"
+                ]
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "protocol"
+    }
+}
