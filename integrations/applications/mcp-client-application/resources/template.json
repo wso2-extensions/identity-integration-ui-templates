@@ -1,0 +1,55 @@
+{
+    "payload": {
+      "name": "",
+      "advancedConfigurations": {
+        "discoverableByEndUsers": false,
+        "skipLogoutConsent": true
+      },
+      "imageUrl": "",
+      "accessUrl": "",
+      "authenticationSequence": {
+        "type": "DEFAULT",
+        "steps": [
+          {
+            "id": 1,
+            "options": [
+              {
+                "idp": "LOCAL",
+                "authenticator": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "inboundProtocolConfiguration": {
+        "oidc": {
+          "grantTypes": ["authorization_code"],
+          "callbackURLs": [],
+          "allowedOrigins": [],
+          "publicClient": true,
+          "pkce": {
+            "mandatory": true,
+            "supportPlainTransformAlgorithm": false
+          },
+          "accessToken": {
+            "type": "JWT",
+            "userAccessTokenExpiryInSeconds": 3600,
+            "applicationAccessTokenExpiryInSeconds": 3600,
+            "bindingType": "cookie",
+            "revokeTokensWhenIDPSessionTerminated": true,
+            "validateTokenBinding": true,
+            "accessTokenAttributes": []
+          },
+          "refreshToken": {
+            "expiryInSeconds": 86400,
+            "renewRefreshToken": true
+          },
+          "subjectToken": {
+            "enable": true,
+            "applicationSubjectTokenExpiryInSeconds": 3600
+          }
+        }
+      }
+    }
+  }
+  
