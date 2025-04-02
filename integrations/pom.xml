@@ -64,6 +64,7 @@
         <module>applications/zoom</module>
         <module>applications/slack</module>
         <module>notification-providers/firebase</module>
+        <module>applications/mcp-client-application</module>
     </modules>
 
     <build>
