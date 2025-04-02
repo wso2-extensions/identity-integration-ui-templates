@@ -4,7 +4,7 @@
     "name": "MCP Client Application",
     "description": "An application that needs a secure connection to an MCP Server.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/mcp-template-illustration.svg",
-    "displayOrder": 0,
+    "displayOrder": -1,
     "category": "DEFAULT",
     "tags": [
         "Default",
