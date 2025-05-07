@@ -27,6 +27,15 @@
                     "required": true,
                     "placeholder": "https://my-app.io/callback",
                     "dataComponentId": "mcp-create-wizard-callback-url"
+                },
+                {
+                    "id": "publicClient",
+                    "aria-label": "Public client",
+                    "name": "inboundProtocolConfiguration.oidc.publicClient",
+                    "label": "Public client",
+                    "type": "checkbox",
+                    "dataComponentId": "mcp-create-wizard-public-client",
+                    "helperText": "Select if your app runs in an environment where storing a client secret securely is not possible (e.g., SPAs, mobile apps). This cannot be changed later."
                 }
             ]
         }
@@ -43,7 +52,6 @@
                 "id": "protocol",
                 "displayName": "Protocol",
                 "hiddenComponents": [
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-oidc-client-secret",
                     "application-edit-access-settings-inbound-oauth2-oidc-form-pushed-authorization-requests",
                     "application-edit-access-settings-inbound-oauth2-oidc-form-request-object",
                     "application-edit-access-settings-inbound-oauth2-oidc-form-hybrid-flow",
