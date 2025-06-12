@@ -1,6 +1,6 @@
 {
     "id": "m2m-application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "M2M Application",
     "description": "Applications tailored for Machine to Machine communication",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/m2m-template.svg",
@@ -20,10 +20,6 @@
                     "logo": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/oauth2.png"
                 }
             ]
-        },
-        {
-            "key": "featureStatus",
-            "value": "new"
         }
     ]
 }
