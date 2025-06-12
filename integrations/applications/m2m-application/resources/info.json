@@ -20,10 +20,6 @@
                     "logo": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/oauth2.png"
                 }
             ]
-        },
-        {
-            "key": "featureStatus",
-            "value": "new"
         }
     ]
 }
