@@ -14,10 +14,6 @@
         {
             "key": "featureStatus",
             "value": "new"
-        },
-        {
-            "key": "useNewCreateWizard",
-            "value": true
         }
     ]
 }
