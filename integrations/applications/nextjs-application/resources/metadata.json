@@ -1,0 +1,121 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "nextjs-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://myapp.io/login",
+                    "dataComponentId": "nextjs-create-wizard-callback-url"
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "nextjs-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "guide": [ "##### Name\n***\n***\nA unique name to identify your application.\n***\nE.g., Next.js\n***\n***\n***\n***\n##### Authorized Redirect URL\n***\n***\nThe URL to which the authorization code is sent to upon authentication and where the user is redirected to upon logout.\n***\nE.g., https://myapp.io/login" ]
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "## Configure Next.js\n***\n***\n***\nFollow the steps below to integrate ${productName} authentication into your Next.js application using `Auth.js`.\n***\n***\n***\n> Ensure that Node.js (version 18 or later, preferably an LTS version) and npm are installed in your environment. Refer to the [Node.js documentation](https://nodejs.org/) for installation instructions.\n<!--rehype:type=info&title=Prerequisites-->\n***\n***\n***\n***\n### Create a Next.js Application\n<!--rehype:numbered=true&content=1-->\n***\n***\nIf you don’t have a Next.js application set up yet, run the following command to create one.\n***\n***\n```bash\n# Using npm\nnpm create next-app@latest next-sample -- --yes\ncd next-sample\n\n# Using pnpm\npnpm create next-app@latest next-sample -- --yes\ncd next-sample\n\n# Using yarn\nyarn create next-app next-sample -- --yes\ncd next-sample\n```\n***\n***\n***  \n***  \n### Install SDK\n<!--rehype:numbered=true&content=2-->\n***\n***\nRun the following command to install the Asgardeo Next.js SDK.\n***\n***\n```bash\n# Using npm\nnpm install @asgardeo/nextjs\n\n# Using pnpm\npnpm add @asgardeo/nextjs\n\n# Using yarn\nyarn add @asgardeo/nextjs\n```\n***\n***\n***  \n***  \n### Set up environment variables\n<!--rehype:numbered=true&content=3-->\n***\n***\nCreate a `.env` file in the root of your project and add the following environment variables.\n***\n***\n```bash\nNEXT_PUBLIC_ASGARDEO_BASE_URL=${serverOrigin}/t/${tenantDomain}\nNEXT_PUBLIC_ASGARDEO_CLIENT_ID=${protocol.oidc.clientId}\nASGARDEO_CLIENT_SECRET=${protocol.oidc.clientSecret}\n```\n***\n***\n***  \n***  \n### Setup the Middleware\n<!--rehype:numbered=true&content=4-->\n***\n***\nCreate a `middleware.ts` file in the root of your project to handle authentication.\n***\n***\n```bash\nimport { AsgardeoNext } from '@asgardeo/nextjs';\nimport { NextRequest } from 'next/server';\n\nconst asgardeo = new AsgardeoNext();\n\nasgardeo.initialize({\n  baseUrl: process.env.NEXT_PUBLIC_ASGARDEO_BASE_URL,\n  clientId: process.env.NEXT_PUBLIC_ASGARDEO_CLIENT_ID,\n  clientSecret: process.env.ASGARDEO_CLIENT_SECRET,\n});\n\nexport async function middleware(request: NextRequest) {\n  return await asgardeo.middleware(request);\n}\n\nexport const config = {\n  matcher: [\n    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',\n    '/(api|trpc)(.*)',\n  ],\n};\n```\n***\n***\n***\n***\n### Configure the `AsgardeoProvider`\n<!--rehype:numbered=true&content=5-->\n***\n***\nWrap your application with the `AsgardeoProvider` in the main entry file, typically `app/layout.tsx`.\n***\n***\n```bash\nimport type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport {AsgardeoProvider} from '@asgardeo/nextjs';\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Create Next App\",\n  description: \"Generated by create next app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        <AsgardeoProvider>{children}</AsgardeoProvider>\n      </body>\n    </html>\n  );\n}\n```\n***\n***\n***\n***\n***\n***\n***  \n***  \n### Add Sign-in & Sign-out to Your App\n<!--rehype:numbered=true&content=6-->\n***\n***\nUpdate your `app/page.tsx` to include sign-in and sign-out functionality.\n***\n***\n```bash\nimport {SignInButton, SignedIn, SignOutButton, SignedOut} from '@asgardeo/nextjs';\n\nexport default function Home() {\n  return (\n    <>\n      <SignedOut>\n        <SignInButton />\n      </SignedOut>\n      <SignedIn>\n        <SignOutButton />\n      </SignedIn>\n    </>\n  );\n}\n```\n***\n***\n***  \n***  \n### Display User Information\n<!--rehype:numbered=true&content=7-->\n***  \n***  \nTo display the authenticated user's details:\n***  \n***  \nFirst, update the existing import statement in `app/page.tsx` to include `User` and `UserProfile`.\n***  \n*** \n```bash\nimport { SignedIn, SignedOut, SignInButton, SignOutButton, User, UserProfile } from '@asgardeo/nextjs';\n```\n***  \n*** \nNext, add the `User` and `UserProfile` components inside the `<SignedIn>` block.\n***  \n*** \n```bash\n…\n\n<SignedIn>\n\n  <User>\n    {({ user }) => (\n      <div>\n        <h1>Welcome, {user.username}</h1>\n      </div>\n    )}\n  </User>\n  <UserProfile />\n\n  <SignOutButton />\n\n</SignedIn>\n\n…\n\n```\n***\n***\n***\n***  \n### Try out\n<!--rehype:numbered=true&content=8-->\n***\n***\n> To test the Next.js application, [create a user](/users)<!--rehype:external=false--> in the ${productName}.\n<!--rehype:type=warning-->\n***\n***\nRun the application using the following command.\n***\n*** \n```bash\n# Using npm\nnpm run dev\n\n# Using pnpm\npnpm dev\n\n# Using yarn\nyarn dev\n```\n***\n*** \nIn the rendered page, you will see a **Sign In** button. Clicking it will redirect you to the ${productName} sign-in page.\n***\n***\n***\n***  \n### Embedded Login Page (Optional)\n<!--rehype:numbered=true&content=9-->\n***\n***\nTo use an embedded login page instead of redirecting to ${productName}, you can use the `SignIn` component. Follow the steps below to configure it.\n***\n*** \nFirst, add the following `signInUrl` configuration in `middelware.ts`.\n***\n***\n```bash\n…\n\nasgardeo.initialize({\n  …,\n  signInUrl: '/signin',\n});\n\n…\n```\n***\n***\nNext, create a new page for the embedded sign-in component at `app/signin/page.tsx` with the following content.\n***\n***\n```bash\n'use client';\n\nimport {SignIn} from '@asgardeo/nextjs';\n\nexport default function SignInPage() {\n  return <SignIn />;\n}\n````\n***\n***\nAfter completing the configuration, restart the development server if it was already running. Clicking the **Sign In** button will now render the embedded login page instead of redirecting to the ${productName} sign-in page.\n***\n***"
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding-and-revokation"
+                ]
+            },
+            {
+                "id": "user-attributes"
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "provisioning"
+            },
+            {
+                "id": "advanced",
+                "hiddenComponents": [
+                    "application-edit-advanced-settings-form-client-attestation",
+                    "application-edit-advanced-settings-form-trusted-apps",
+                    "application-edit-advanced-settings-form-platform-settings"
+                ]
+            },
+            {
+                "id": "shared-access"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "id": "react-application",
+    "version": "1.0.0",
+    "name": "React",
+    "description": "Client rendered React applications scaffolded with Create React App (CRA), Vite or any other tool.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/react-logo.svg",
+    "displayOrder": 0,
+    "category": "TECHNOLOGY",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "featureStatus",
+            "value": "new"
+        }
+    ]
+}

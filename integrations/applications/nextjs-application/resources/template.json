@@ -1,0 +1,52 @@
+{
+    "payload": {
+        "name": "Next.js",
+        "advancedConfigurations": {
+            "discoverableByEndUsers": false,
+            "skipLogoutConsent": true,
+            "skipLoginConsent": true
+        },
+        "imageUrl": "${clientOrigin}/${appBaseNameWithoutTenant}/resources/applications/assets/images/technologies/nextjs-logo.svg",
+        "authenticationSequence": {
+            "type": "DEFAULT",
+            "steps": [
+                {
+                    "id": 1,
+                    "options": [
+                        {
+                            "idp": "LOCAL",
+                            "authenticator": "basic"
+                        }
+                    ]
+                }
+            ]
+        },
+        "claimConfiguration":{
+            "dialect":"LOCAL",
+            "requestedClaims": [
+                {
+                    "claim": {
+                        "uri":"http://wso2.org/claims/username"
+                    }
+                }
+            ]
+        },
+        "inboundProtocolConfiguration": {
+            "oidc": {
+                "grantTypes": [
+                    "authorization_code"
+                ],
+                "allowedOrigins": [],
+                "callbackURLs": [],
+                "publicClient": false,
+                "refreshToken": {
+                    "expiryInSeconds": 86400
+                }
+            }
+        },
+        "associatedRoles": {
+            "allowedAudience": "APPLICATION",
+            "roles": []
+        }
+    }
+}

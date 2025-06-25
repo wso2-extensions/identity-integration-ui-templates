@@ -65,6 +65,8 @@
         <module>applications/slack</module>
         <module>notification-providers/firebase</module>
         <module>applications/mcp-client-application</module>
+        <module>applications/react-application</module>
+        <module>applications/nextjs-application</module>
     </modules>
 
     <build>
