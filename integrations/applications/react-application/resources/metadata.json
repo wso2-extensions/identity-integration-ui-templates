@@ -1,0 +1,130 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "react-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://myapp.io/login",
+                    "dataComponentId": "react-create-wizard-callback-url"
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "react-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "guide": [ "##### Name\n***\n***\nA unique name to identify your application.\n***\nE.g., React\n***\n***\n***\n***\n##### Authorized Redirect URL\n***\n***\nThe URL to which the authorization code is sent to upon authentication and where the user is redirected to upon logout.\n***\nE.g., https://myapp.io/login" ]
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "## Configure React\n***\n***\n***\nFollow the steps below to integrate ${productName} authentication into your React application.\n***\n***\n***\n> Ensure that Node.js (version 16 or later, preferably an LTS version) and npm are installed in your environment. Refer to the [Node.js documentation](https://nodejs.org/) for installation instructions.\n<!--rehype:type=info&title=Prerequisites-->\n***\n***\n***\n***\n### Create a React Application\n<!--rehype:numbered=true&content=1-->\n***\n***\nIf you don’t have a React application set up yet, use the following command to create one with Vite.\n***\n***\n```bash\n# Using npm\nnpm create vite@latest react-sample --template react\n\n# Using pnpm\npnpm create vite@latest react-sample --template react\n\n# Using yarn\nyarn create vite react-sample --template react\n```\n***\n***\n***  \n***  \n### Install SDK\n<!--rehype:numbered=true&content=2-->\n***\n***\nRun the following command to install the Asgardeo React SDK.\n***\n***\n```bash\n# Using npm\nnpm install @asgardeo/react\n\n# or using pnpm\npnpm add @asgardeo/react\n\n# or using yarn\nyarn add @asgardeo/react\n```\n***\n***\n***  \n***  \n### Configure the `AsgardeoProvider`\n<!--rehype:numbered=true&content=3-->\n***\n***\nWrap your application with the `AsgardeoProvider` in the main entry file, typically `src/main.tsx`.\n***\n***\n```bash\nimport { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport './index.css'\nimport App from './App.tsx'\nimport { AsgardeoProvider } from '@asgardeo/react'\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    <AsgardeoProvider\n      baseUrl=\"${serverOrigin}/t/${tenantDomain}\"\n      clientId=\"${protocol.oidc.clientId}\"\n    >\n      <App />\n    </AsgardeoProvider>\n  </StrictMode>\n)\n```\n***\n***\n***  \n***  \n### Add Sign-in & Sign-out to Your App\n<!--rehype:numbered=true&content=4-->\n***\n***\nUpdate your `App.tsx` to include sign-in and sign-out functionality.\n***\n***\n```bash\nimport { SignedIn, SignedOut, SignInButton, SignOutButton } from '@asgardeo/react'\nimport './App.css'\n\nfunction App() {\n  return (\n    <>\n      <SignedIn>\n        <SignOutButton />\n      </SignedIn>\n      <SignedOut>\n        <SignInButton />\n      </SignedOut>\n    </>\n  )\n}\n\nexport default App\n```\n***\n***\n***  \n***  \n### Display User Information\n<!--rehype:numbered=true&content=5-->\n***  \n***  \nTo display the authenticated user's details, use the `User` and `UserProfile` components.\n***  \n*** \n```bash\nimport { SignedIn, SignedOut, SignInButton, SignOutButton, User, UserProfile } from '@asgardeo/react'\nimport './App.css'\n\nfunction App() {\n  return (\n    <>\n      <SignedIn>\n        <User>\n          {({ user }) => (\n            <div>\n              <h1>Welcome, {user.username}</h1>\n            </div>\n          )}\n        </User>\n        <UserProfile />\n        <SignOutButton />\n      </SignedIn>\n      <SignedOut>\n        <SignInButton />\n      </SignedOut>\n    </>\n  )\n}\n\nexport default App\n```\n***\n***\n***\n***  \n### Try out\n<!--rehype:numbered=true&content=6-->\n***\n***\n> To test the React application, [create a user](/users)<!--rehype:external=false--> in the ${productName}.\n<!--rehype:type=warning-->\n***\n***\nRun the application using the following command.\n***\n*** \n```bash\n# Using npm\nnpm run dev\n\n# Using pnpm\npnpm dev\n\n# Using yarn\nyarn dev\n```\n***\n*** \nIn the rendered page, you will see a **Sign In** button. Clicking it will redirect you to the ${productName} sign-in page.\n***\n*** "
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-pushed-authorization-requests",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-request-object",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-method",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-client-authentication",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding-and-revokation",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-certificate"
+                ]
+            },
+            {
+                "id": "user-attributes"
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "provisioning"
+            },
+            {
+                "id": "advanced",
+                "hiddenComponents": [
+                    "application-edit-advanced-settings-form-client-attestation",
+                    "application-edit-advanced-settings-form-trusted-apps",
+                    "application-edit-advanced-settings-form-platform-settings",
+                    "application-edit-advanced-settings-form-application-native-authentication"
+                ]
+            },
+            {
+                "id": "shared-access"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}
