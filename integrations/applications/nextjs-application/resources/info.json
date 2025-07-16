@@ -1,6 +1,6 @@
 {
     "id": "nextjs-application",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "Next.js",
     "description": "Server-rendered (SSR) Next.js apps scaffolded with Create Next App or similar tools.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/nextjs-logo.svg",

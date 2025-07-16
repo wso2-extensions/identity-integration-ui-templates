@@ -1,6 +1,6 @@
 {
     "id": "react-application",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "name": "React",
     "description": "Client-rendered (CSR) React apps scaffolded with Vite or similar tools.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/react-logo.svg",
