@@ -2,7 +2,7 @@
     "id": "nextjs-application",
     "version": "1.0.1",
     "name": "Next.js",
-    "description": "Server rendered or static websites scaffolded with Create Next App or any other tool.",
+    "description": "Server-rendered (SSR) Next.js apps scaffolded with Create Next App or similar tools.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/nextjs-logo.svg",
     "displayOrder": 0,
     "category": "TECHNOLOGY",
