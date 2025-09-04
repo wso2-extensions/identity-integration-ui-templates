@@ -61,6 +61,7 @@
         <module>applications/salesforce</module>
         <module>applications/google</module>
         <module>applications/microsoft-365</module>
+        <module>applications/microsoft-365-v2</module>
         <module>applications/zoom</module>
         <module>applications/slack</module>
         <module>notification-providers/firebase</module>
