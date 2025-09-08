@@ -1,0 +1,199 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "microsoft-365-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "issuer",
+                    "aria-label": "Issuer",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.issuer",
+                    "label": "Issuer",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "microsoft-365-create-wizard-issuer",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "uniqueIDGenerator",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "issuerId"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "access-url",
+                    "aria-label": "Access URL",
+                    "name": "accessUrl",
+                    "label": "Access URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "microsoft-365-create-wizard-access-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "inboundProtocolConfiguration.saml.manualConfiguration.issuer"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "tenantDomain"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "serverOrigin"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "microsoft-365-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "default-assertion-consumer-url",
+                    "ariaLabel": "Default Assertion Consumer URL",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.defaultAssertionConsumerUrl",
+                    "label": "Default Assertion Consumer URL",
+                    "type": "text",
+                    "required": false,
+                    "hidden": true,
+                    "placeholder": "https://orgname.my.salesforce.com?so=rt000067",
+                    "dataComponentId": "microsoft-365-wizard-form-default-assertion-consumer-url",
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "inboundProtocolConfiguration.saml.manualConfiguration.assertionConsumerUrls.[0]"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "idp-entityid-alias",
+                    "aria-label": "Idp Entity ID Alias",
+                    "name": "inboundProtocolConfiguration.saml.manualConfiguration.idpEntityIdAlias",
+                    "label": "IDP Entity ID Alias",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "microsoft-365-create-wizard-idp-entity-id-alias",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "tenantDomain"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "serverOrigin"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "## Configure Microsoft 365 \n***\n***\n***\nFollow the steps given below to integrate Microsoft as a Single Sign-On (SSO) Service Provider with ${productName} using the SAML 2.0 protocol.\n***\n***\n***\n***    \n> - You need an Office 365 Business account with admin access and a domain added as per the [Microsoft documentation]( https://learn.microsoft.com/en-gb/microsoft-365/admin/setup/add-domain?view=o365-worldwide&redirectSourcePath=%252fen-us%252farticle%252fadd-a-domain-to-office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611).\n> - Ensure that PowerShell is installed.\n<!--rehype:type=info&title=Prerequisites-->\n***\n***\n***\n***\n### Install the required modules and connect to Microsoft Azure AD\n<!--rehype:numbered=true&content=1-->\n***\n***\n***\nStart PowerShell and install the Microsoft Graph Powershell SDK.\n***\n***\n```bash\nInstall-Module Microsoft.Graph -Scope CurrentUser -Repository PSGallery -Force\n```\n***\n***\nVerify that the Graph SDK is installed.\n***\n***\n```bash\nGet-InstalledModule Microsoft.Graph\n```\n***\n***\n***\n### Configure Azure AD Domain Federation\n<!--rehype:numbered=true&content=2-->\n***\n***\n***\nConnect to Your Microsoft Entra Directory.\n***\n***\n```powershell\nConnect-MgGraph -Scopes \"Domain.ReadWrite.All\"\n```\n***\n***\n***\nConfigure the domain as a federated domain by providing the respective federation settings that match the ${productName}. Store the federation settings in parameters.\n***\n***\n```bash\n$Domain = \"yourdomain.com\"\n$DisplayName = \"Login with ${productName}\"\n$LogOnUrl = \"${metadata.saml.ssoUrl}\"\n$LogOffUrl = \"${metadata.saml.sloUrl}\"\n$IssuerName = \"${metadata.saml.issuer}\"\n$IDPResponseSigningCert = \"${metadata.saml.certificate}\"\n$Protocol = \"saml\"\n$MfaBehavior = \"rejectMfaByFederatedIdp\"\n\nNew-MgDomainFederationConfiguration `\n  -DomainId $Domain `\n  -DisplayName $DisplayName `\n  -IssuerUri $IssuerName `\n  -PassiveSignInUri $LogOnUrl `\n  -PreferredAuthenticationProtocol $Protocol `\n  -SignOutUri $LogOffUrl `\n  -SigningCertificate $IDPResponseSigningCert `\n  -FederatedIdpMfaBehavior $MfaBehavior\n```\n***\n***\nVerify the configured federation settings for your domain.\n***\n***\n```powershell\nGet-MgDomainFederationConfiguration -DomainId \"yourdomain.com\"\n```\n***\n***\nIf you wish to redo the configurations, run the following command to first remove the federation configurations of your domain. Use the ID of the previously created domain federation configuration for `InternalDomainFederationId`.\n***\n***\n```powershell\nRemove-MgDomainFederationConfiguration `\n  -DomainId \"yourdomain.com\" `\n  -InternalDomainFederationId \"2a8ce608-bb34-473f-9e0f-f373cbc5a\"\n```\n***\n***\n***\n***\n### Try Out SSO\n<!--rehype:numbered=true&content=3-->\n***\n***\n***\nTo test the SSO, [create a user](/users) on the ${productName}. Then, add that same user to Microsoft using the following command. Here, the `OnPremisesImmutableId` should be the UUID of the user. \n***\n***\n```powershell\n$Password = \"p@ssword1\"\n$PasswordProfile = @{ Password = \"$Password\" }\n\nNew-MgUser `\n  -UserPrincipalName \"john@yourdomain.com\" `\n  -DisplayName \"John Doe\" `\n  -GivenName \"John\" `\n  -Surname \"Doe\" `\n  -AccountEnabled `\n  -MailNickName \"JohnDoe\" `\n  -OnPremisesImmutableId \"ABCDEFG1234567890\" `\n  -PasswordProfile $PasswordProfile `\n  -UsageLocation \"US\"\n```\n***\n***\n\n> Alternatively, you can automate the user synchronization using Powershell Cmdlets as well. For more information, refer to the [Microsoft Entra ID documentation](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-saml-idp#provision-user-principals-to-microsoft-entra-id--microsoft-365).\n\n***\n***\n\nYou can access Microsoft 365 portal via [https://portal.office.com](https://portal.office.com). When you enter the user's email address (eg: `john@yourdomain.com`), you'll be automatically redirected to the ${productName} login page to complete the authentication."
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-inbound-saml-form-issuer",
+                    "application-edit-inbound-saml-form-application-qualifier",
+                    "application-edit-inbound-saml-form-idp-entity-id-alias",
+                    "application-edit-inbound-saml-form-bindings",
+                    "application-edit-inbound-saml-form-signature-validation-for-artifact-binding",
+                    "application-edit-inbound-saml-form-audience",
+                    "application-edit-inbound-saml-form-recipient",
+                    "application-edit-inbound-saml-form-assertion-query-profile",
+                    "application-edit-inbound-saml-form-attribute-name-format"
+                ]
+            },
+            {
+                "id": "user-attributes",
+                "hiddenComponents": [
+                    "application-edit-user-attributes-linked-accounts",
+                    "application-edit-user-attributes--validate-linked-local-accounts",
+                    "application-edit-user-attributes-include-tenant-domain",
+                    "application-edit-user-attributes-include-user-domain"
+                ]
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "shared-access"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}
