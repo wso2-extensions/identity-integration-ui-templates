@@ -1,7 +1,7 @@
 {
     "id": "microsoft-365",
-    "version": "1.0.2",
-    "name": "Microsoft 365",
+    "version": "1.0.3",
+    "name": "Microsoft 365 (Legacy)",
     "description": "Microsoft 365 is a product family of productivity software, collaboration and cloud-based services owned by Microsoft.",
     "image": "${CONSOLE_BASE_URL}/resources/connections/assets/images/logos/microsoft.svg",
     "displayOrder": 2,
