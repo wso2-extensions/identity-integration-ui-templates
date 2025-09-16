@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.wso2.carbon.identity.integration.ui.templates</groupId>
         <artifactId>integration-templates</artifactId>
-        <version>1.0.26-SNAPSHOT</version>
+        <version>1.0.26</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     
