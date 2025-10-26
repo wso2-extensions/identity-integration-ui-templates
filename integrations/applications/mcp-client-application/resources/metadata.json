@@ -35,7 +35,7 @@
                     "label": "Public client",
                     "type": "checkbox",
                     "dataComponentId": "mcp-create-wizard-public-client",
-                    "helperText": "Select if your app runs in an environment where storing a client secret securely is not possible (e.g., single page applications, mobile apps, etc). This cannot be changed later."
+                    "helperText": "Select if your app runs in an environment where storing a client secret securely is not possible (e.g., single page applications, mobile apps, etc). **This cannot be changed later.**"
                 }
             ]
         }
