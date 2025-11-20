@@ -1,0 +1,19 @@
+{
+    "id": "angular-application",
+    "version": "1.0.0",
+    "name": "Angular",
+    "description": "Client-rendered (CSR) Angular apps scaffolded with Angular CLI or similar tools.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/angular-logo.svg",
+    "displayOrder": 0,
+    "category": "TECHNOLOGY",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "featureStatus",
+            "value": "new"
+        }
+    ]
+}
