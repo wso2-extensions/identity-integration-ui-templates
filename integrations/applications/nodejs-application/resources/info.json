@@ -1,0 +1,19 @@
+{
+    "id": "nodejs-application",
+    "version": "1.0.2",
+    "name": "Node.js",
+    "description": "Server-side Node.js applications using Express or similar frameworks.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/nodejs-logo.svg",
+    "displayOrder": 0,
+    "category": "TECHNOLOGY",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "featureStatus",
+            "value": "new"
+        }
+    ]
+}
