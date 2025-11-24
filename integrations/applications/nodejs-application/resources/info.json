@@ -1,6 +1,6 @@
 {
     "id": "nodejs-application",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "name": "Node.js",
     "description": "Server-side Node.js applications using Express or similar frameworks.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/nodejs-logo.svg",
