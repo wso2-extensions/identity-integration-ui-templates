@@ -1,12 +1,12 @@
 {
     "payload": {
-        "name": "Node.js",
+        "name": "Express.js",
         "advancedConfigurations": {
             "discoverableByEndUsers": false,
             "skipLogoutConsent": true,
             "skipLoginConsent": true
         },
-        "imageUrl": "${clientOrigin}/${appBaseNameWithoutTenant}/resources/applications/assets/images/technologies/nodejs-logo.svg",
+        "imageUrl": "${clientOrigin}/${appBaseNameWithoutTenant}/resources/applications/assets/images/technologies/expressjs-logo.svg",
         "authenticationSequence": {
             "type": "DEFAULT",
             "steps": [

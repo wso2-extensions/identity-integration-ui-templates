@@ -1,0 +1,19 @@
+{
+    "id": "expressjs-application",
+    "version": "1.0.0",
+    "name": "Express.js",
+    "description": "Express.js applications scaffolded with Express Generator or similar tools.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/expressjs-logo.svg",
+    "displayOrder": 0,
+    "category": "TECHNOLOGY",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "featureStatus",
+            "value": "new"
+        }
+    ]
+}
