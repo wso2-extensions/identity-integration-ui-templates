@@ -1,0 +1,130 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "angular-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://myapp.io/login",
+                    "dataComponentId": "angular-create-wizard-callback-url"
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "angular-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "guide": [ "##### Name\n***\n***\nA unique name to identify your application.\n***\nE.g., Angular\n***\n***\n***\n***\n##### Authorized Redirect URL\n***\n***\nThe URL to which the authorization code is sent to upon authentication and where the user is redirected to upon logout.\n***\nE.g., https://myapp.io/login" ]
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "### Configure the `AuthConfig`\n***\n***\n***\n> > To connect ${productName} with your Angular application, follow the [Angular Quickstart](${docSiteURL}/quick-starts/angular/).\n> <!--rehype:type=info-->\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n> Update the `AuthConfig` object in your `app.config.ts` file.\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n> ```tsx\n> export const authConfig: AuthConfig = {\n>  issuer: '${metadata.oidc.tokenEndpoint}',\n>  redirectUri: '${protocol.oidc.callbackURLs[0]}',\n>  clientId: '${protocol.oidc.clientId}',\n>  responseType: 'code',\n>  scope: '${moderatedData.scopes.spaceSeperatedList}',\n>  strictDiscoveryDocumentValidation: false,\n>};\n>```\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n*** \n### Configurations\n***\n***\n***\n> For more details on configurations and server endpoints, go to the [Protocol](#tab=protocol)<!--rehype:external=false--> and [Info](#tab=info)<!--rehype:external=false--> tabs, respectively.\n> ***\n> ***\n> ***\n> **Client ID:**\n> ***\n> ```bash\n> ${protocol.oidc.clientId}\n> ```\n> ***\n> **Redirect URL:**\n> ***\n> ```bash\n> ${protocol.oidc.callbackURLs[0]}\n> ```\n> ***\n> **Scope:**\n> ***\n> ```bash\n> ${moderatedData.scopes.spaceSeperatedList}\n> ```\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n"
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-pushed-authorization-requests",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-request-object",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-method",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-client-authentication",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding-and-revokation",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-certificate"
+                ]
+            },
+            {
+                "id": "user-attributes"
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "provisioning"
+            },
+            {
+                "id": "advanced",
+                "hiddenComponents": [
+                    "application-edit-advanced-settings-form-client-attestation",
+                    "application-edit-advanced-settings-form-trusted-apps",
+                    "application-edit-advanced-settings-form-platform-settings",
+                    "application-edit-advanced-settings-form-application-native-authentication"
+                ]
+            },
+            {
+                "id": "shared-access"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}

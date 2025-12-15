@@ -1,0 +1,121 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "expressjs-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "uniqueApplicationName",
+                            "type": "initialize"
+                        },
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://myapp.io/login",
+                    "dataComponentId": "expressjs-create-wizard-callback-url"
+                },
+                {
+                    "id": "image-url",
+                    "aria-label": "Image URL",
+                    "name": "imageUrl",
+                    "label": "Image URL",
+                    "type": "text",
+                    "required": false,
+                    "dataComponentId": "expressjs-create-wizard-image-url",
+                    "hidden": true,
+                    "handlers": [
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "clientOrigin"
+                            }
+                        },
+                        {
+                            "name": "dependentProperty",
+                            "type": "submission",
+                            "props": {
+                                "placeholder": "appBaseNameWithoutTenant"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "guide": [ "##### Name\n***\n***\nA unique name to identify your application.\n***\nE.g., Express.js\n***\n***\n***\n***\n##### Authorized Redirect URL\n***\n***\nThe URL to which the authorization code is sent to upon authentication and where the user is redirected to upon logout.\n***\nE.g., https://myapp.io/login" ]
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "### Configure the `AsgardeoStrategy`\n***\n***\n***\n> > To connect ${productName} with your Express.js application, follow the [Express.js Complete Guide](${docSiteURL}/complete-guides/expressjs/introduction/).\n> <!--rehype:type=info-->\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n> Update the `AsgardeoStrategy` configuration in your `routes/auth.js` file.\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n> ```tsx\n> {\n>issuer: \"${metadata.oidc.tokenEndpoint}\",\n>authorizationURL: \"${metadata.oidc.authorizeEndpoint}\",\n>tokenURL: \"${metadata.oidc.tokenEndpoint}\",\n>userInfoURL: \"${metadata.oidc.userEndpoint}\",\n>clientID: \"${protocol.oidc.clientId}\",\n>clientSecret: \"<your_client_secret>\",\n>callbackURL: \"${protocol.oidc.callbackURLs[0]}\",\n>scope: \"${moderatedData.scopes.spaceSeperatedList}\",\n> }\n> ```\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n*** \n### Configurations\n***\n***\n***\n> For more details on configurations and server endpoints, go to the [Protocol](#tab=protocol)<!--rehype:external=false--> and [Info](#tab=info)<!--rehype:external=false--> tabs, respectively.\n> ***\n> ***\n> ***\n> **Client ID:**\n> ***\n> ```bash\n> ${protocol.oidc.clientId}\n> ```\n> ***\n> **Redirect URL:**\n> ***\n> ```bash\n> ${protocol.oidc.callbackURLs[0]}\n> ```\n> ***\n> **Scope:**\n> ***\n> ```bash\n> ${moderatedData.scopes.spaceSeperatedList}\n> ```\n<!--rehype:type=wrapper&indent=6-->\n***\n***\n"
+            },
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding-and-revokation"
+                ]
+            },
+            {
+                "id": "user-attributes"
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "provisioning"
+            },
+            {
+                "id": "advanced",
+                "hiddenComponents": [
+                    "application-edit-advanced-settings-form-client-attestation",
+                    "application-edit-advanced-settings-form-trusted-apps",
+                    "application-edit-advanced-settings-form-platform-settings"
+                ]
+            },
+            {
+                "id": "shared-access"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}
