@@ -68,6 +68,8 @@
         <module>applications/mcp-client-application</module>
         <module>applications/react-application</module>
         <module>applications/nextjs-application</module>
+        <module>applications/angular-application</module>
+        <module>applications/expressjs-application</module>
     </modules>
 
     <build>
