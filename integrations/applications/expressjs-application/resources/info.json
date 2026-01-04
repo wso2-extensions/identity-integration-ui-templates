@@ -1,6 +1,6 @@
 {
     "id": "expressjs-application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Express.js",
     "description": "Express.js applications scaffolded with Express Generator or similar tools.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/expressjs-logo.svg",
