@@ -1,6 +1,6 @@
 {
     "id": "angular-application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Angular",
     "description": "Client-rendered (CSR) Angular apps scaffolded with Angular CLI or similar tools.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/angular-logo.svg",
