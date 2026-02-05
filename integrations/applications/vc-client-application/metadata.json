@@ -10,7 +10,7 @@
                     "type": "text",
                     "required": true,
                     "placeholder": "My App",
-                    "dataComponentId": "mcp-create-wizard-application-name",
+                    "dataComponentId": "vc-create-wizard-application-name",
                     "handlers": [
                         {
                             "name": "applicationName",
@@ -26,7 +26,7 @@
                     "type": "text",
                     "required": true,
                     "placeholder": "https://my-app.io/callback",
-                    "dataComponentId": "mcp-create-wizard-callback-url"
+                    "dataComponentId": "vc-create-wizard-callback-url"
                 }
             ]
         }
