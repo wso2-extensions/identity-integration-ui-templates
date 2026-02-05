@@ -1,0 +1,32 @@
+{
+    "id": "vc-client-application",
+    "name": "VC Client Application",
+    "version": "1.0.0",
+    "description": "Applications tailored for Verifiable Credential (VC) clients.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/vc-client-template-illustration.svg",
+    "displayOrder": 3,
+    "category": "DEFAULT",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "supportedTechnologies",
+            "value": [
+                {
+                    "displayName": "OIDC",
+                    "logo": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/openid-connect.png"
+                }
+            ]
+        },
+        {
+            "key": "featureStatus",
+            "value": "new"
+        },
+        {
+            "key": "useNewCreateWizard",
+            "value": true
+        }
+    ]
+}
