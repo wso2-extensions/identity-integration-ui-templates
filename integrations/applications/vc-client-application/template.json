@@ -1,0 +1,42 @@
+{
+    "payload": {
+      "name": "",
+      "advancedConfigurations": {
+        "discoverableByEndUsers": false,
+        "skipLogoutConsent": true
+      },
+      "imageUrl": "",
+      "accessUrl": "",
+      "authenticationSequence": {
+        "type": "DEFAULT",
+        "steps": [
+          {
+            "id": 1,
+            "options": [
+              {
+                "idp": "LOCAL",
+                "authenticator": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "inboundProtocolConfiguration": {
+        "oidc": {
+          "grantTypes": ["authorization_code", "refresh_token"],
+          "callbackURLs": [],
+          "allowedOrigins": [],
+          "publicClient": true,
+          "pkce": {
+            "mandatory": true,
+            "supportPlainTransformAlgorithm": false
+          },
+          "refreshToken": {
+            "expiryInSeconds": 86400,
+            "renewRefreshToken": true
+          }
+        }
+      }
+    }
+}
+

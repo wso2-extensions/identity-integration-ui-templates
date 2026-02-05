@@ -1,0 +1,95 @@
+{
+    "create": {
+        "form": {
+            "fields": [
+                {
+                    "id": "application-name",
+                    "aria-label": "Application Name",
+                    "name": "name",
+                    "label": "Name",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "My App",
+                    "dataComponentId": "vc-create-wizard-application-name",
+                    "handlers": [
+                        {
+                            "name": "applicationName",
+                            "type": "validation"
+                        }
+                    ]
+                },
+                {
+                    "id": "callback-url",
+                    "aria-label": "Authorized Redirect URL",
+                    "name": "inboundProtocolConfiguration.oidc.callbackURLs.[0]",
+                    "label": "Authorized Redirect URL",
+                    "type": "text",
+                    "required": true,
+                    "placeholder": "https://my-app.io/callback",
+                    "dataComponentId": "vc-create-wizard-callback-url"
+                }
+            ]
+        }
+    },
+    "edit": {
+        "tabs": [
+            {
+                "id": "quick-start",
+                "displayName": "Guide",
+                "contentType": "guide",
+                "guide": "Before your application can obtain tokens for verifiable credential issuance, you need to authorize it to access the verifiable credentials.\n\n&nbsp;\n\nFollow these steps:\n\n1. Navigate to the Authorization tab\n2. Find and authorize the verifiable credentials\n\nOnce authorized, your application will receive access tokens with the appropriate scopes when users sign in. Use these tokens to request verifiable credentials from the issuer endpoint."            
+            },            
+            {
+                "id": "general",
+                "hiddenComponents": [
+                    "application-edit-general-details-form-image-url"
+                ]
+            },
+            {
+                "id": "protocol",
+                "displayName": "Protocol",
+                "hiddenComponents": [
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-request-object",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-hybrid-flow",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-access-token-type",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-access-token-binding-type",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-expiry-time",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-audience",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-algorithm",
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-method"
+                ]
+            },
+            {
+                "id": "user-attributes",
+                "hiddenComponents": [
+                    "application-edit-user-attributes-linked-accounts",
+                    "application-edit-user-attributes--validate-linked-local-accounts",
+                    "application-edit-user-attributes-include-tenant-domain",
+                    "application-edit-user-attributes-include-user-domain"
+                ]
+            },
+            {
+                "id": "sign-in-method"
+            },
+            {
+                "id": "api-authorization"
+            },
+            {
+                "id": "application-roles"
+            },
+            {
+                "id": "advanced"
+            },
+            {
+                "id": "info"
+            }
+        ],
+        "defaultActiveTabId": "quick-start"
+    }
+}
+
