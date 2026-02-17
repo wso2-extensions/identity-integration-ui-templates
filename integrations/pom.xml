@@ -70,6 +70,7 @@
         <module>applications/nextjs-application</module>
         <module>applications/angular-application</module>
         <module>applications/expressjs-application</module>
+        <module>applications/vc-client-application</module>
     </modules>
 
     <build>
