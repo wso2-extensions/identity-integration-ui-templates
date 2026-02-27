@@ -37,7 +37,7 @@
                 "id": "quick-start",
                 "displayName": "Guide",
                 "contentType": "guide",
-                "guide": "Before your application can obtain tokens for verifiable credential issuance, you need to authorize it to access the verifiable credentials.\n\n&nbsp;\n\nFollow these steps:\n\n1. Navigate to the Authorization tab\n2. Find and authorize the verifiable credentials\n\nOnce authorized, your application will receive access tokens with the appropriate scopes when users sign in. Use these tokens to request verifiable credentials from the issuer endpoint."            
+                "guide": "### Configure Authorization\n***    \n***     \nBefore your application can request tokens for verifiable credential issuance, you must authorize the required verifiable credentials for this application.\n*** \n***     \nFollow these steps:\n\n1. Navigate to the [Authorization](#tab=api-authorization)<!--rehype:external=false--> tab\n2. Find and authorize the verifiable credentials\n***    \n\n> After this is configured, the application can request access tokens with the allowed credential scopes and use those tokens to call the issuer’s credential endpoint.\n<!--rehype:type=info-->"
             },            
             {
                 "id": "general",

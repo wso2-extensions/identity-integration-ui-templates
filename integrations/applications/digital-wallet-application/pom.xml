@@ -24,8 +24,8 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
     
-    <name>vc-client-application</name>
-    <artifactId>org.wso2.carbon.identity.integration.ui.templates.applications.vc-client-application</artifactId>
+    <name>digital-wallet-application</name>
+    <artifactId>org.wso2.carbon.identity.integration.ui.templates.applications.digital-wallet-application</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <url>http://wso2.org</url>
