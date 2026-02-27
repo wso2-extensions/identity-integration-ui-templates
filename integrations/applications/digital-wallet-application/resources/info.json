@@ -1,9 +1,9 @@
 {
-    "id": "vc-client-application",
-    "name": "VC Client Application",
+    "id": "digital-wallet-application",
+    "name": "Digital Wallet Application",
     "version": "1.0.0",
-    "description": "Applications tailored for Verifiable Credential (VC) clients.",
-    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/vc-client-template-illustration.svg",
+    "description": "Applications developed to target digital wallets.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/digital-wallet-template-illustration.svg",
     "displayOrder": 3,
     "category": "DEFAULT",
     "tags": [
