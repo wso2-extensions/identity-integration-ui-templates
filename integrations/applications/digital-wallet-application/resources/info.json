@@ -2,7 +2,7 @@
     "id": "digital-wallet-application",
     "name": "Digital Wallet Application",
     "version": "1.0.0",
-    "description": "Applications developed to target digital wallets.",
+    "description": "Applications built for digital wallets that handle verifiable credentials.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/illustrations/digital-wallet-template-illustration.svg",
     "displayOrder": 3,
     "category": "DEFAULT",
