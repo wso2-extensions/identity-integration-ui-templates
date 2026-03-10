@@ -1,0 +1,25 @@
+{
+  "payload": {
+    "provider": "AmazonSNS",
+    "properties": [
+      {
+        "key": "accessKeyId",
+        "value": "accessKeyId"
+      },
+      {
+        "key": "secretAccessKey",
+        "value": "secretAccessKey"
+      },
+      {
+        "key": "region",
+        "value": "region"
+      },
+      {
+        "key": "platformArns",
+        "value": {
+          "platform": "arn"
+        }
+      }
+    ]
+  }
+}

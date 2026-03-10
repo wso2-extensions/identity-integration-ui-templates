@@ -1,0 +1,78 @@
+{
+  "edit": {
+    "form": {
+      "fields": [
+        {
+          "id": "accessKeyId",
+          "aria-label": "AWS Access Key ID",
+          "name": "accessKeyId",
+          "label": "Access Key ID",
+          "type": "text",
+          "required": true,
+          "dataComponentId": "sns-edit-wizard-access-key-id",
+          "placeholder": "Enter the AWS Access Key ID",
+          "helperText": "Enter your AWS Access Key ID. Make sure the key has required permissions."
+        },
+        {
+          "id": "secretAccessKey",
+          "aria-label": "AWS Secret Access Key",
+          "name": "secretAccessKey",
+          "label": "Secret Access Key",
+          "type": "password",
+          "required": true,
+          "dataComponentId": "sns-edit-wizard-secret-access-key",
+          "placeholder": "Enter the AWS Secret Access Key",
+          "helperText": "Enter your AWS Secret Access Key used to securely authenticate your account."
+        },
+        {
+          "id": "region",
+          "aria-label": "AWS Region",
+          "name": "region",
+          "label": "AWS Region",
+          "type": "text",
+          "required": true,
+          "dataComponentId": "sns-edit-wizard-region",
+            "placeholder": "Enter the AWS Region (e.g., us-east-1)",
+          "helperText": "Enter the AWS Region where your SNS service is located."
+        },
+        {
+          "id": "platformArns",
+          "aria-label": "Platform Application ARNs",
+          "name": "platformArns",
+          "label": "Platform Application ARNs",
+          "type": "keyvaluemap",
+          "required": true,
+          "dataComponentId": "sns-edit-wizard-platformArns",
+          "placeholder": "Enter Platform Application ARN",
+          "valueType": "text",
+          "keyName": "Platform",
+          "keyOptions" :[
+            { "text": "FCM", "value": "fcm" },
+            { "text": "APNs", "value": "apns" },
+            { "text": "Baidu", "value": "baidu" },
+            { "text": "ADM", "value": "adm" },
+            { "text": "MPNS", "value": "mpns" },
+            { "text": "WNS", "value": "wns" }
+          ],
+          "helperText": "Provide the SNS platform application ARNs for all platforms you need.",
+          "handlers": [
+            {
+              "name": "extractObjectFields",
+              "type": "initialize",
+              "props": {
+                "delimiter": ":"
+              }
+            },
+            {
+              "name": "expandObjectProperty",
+              "type": "submission",
+              "props": {
+                "delimiter": ":"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
