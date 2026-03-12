@@ -1,0 +1,19 @@
+{
+  "id": "amazon-sns",
+  "version": "1.0.0",
+  "name": "Amazon Simple Notification Service",
+  "description": "Push Notification Service by Amazon Web Services.",
+  "image": "${CONSOLE_BASE_URL}/resources/notification-providers/assets/images/illustrations/push.svg",
+  "displayOrder": 1,
+  "tags": [
+    "Push Notification"
+  ],
+  "category": "PUSH",
+  "type": "notification-providers",
+  "customAttributes": [
+    {
+      "key": "featureStatus",
+      "value": "new"
+    }
+  ]
+}
