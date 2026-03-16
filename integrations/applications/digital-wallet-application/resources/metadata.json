@@ -68,7 +68,6 @@
                 "id": "user-attributes",
                 "hiddenComponents": [
                     "application-edit-user-attributes-linked-accounts",
-                    "application-edit-user-attributes--validate-linked-local-accounts",
                     "application-edit-user-attributes-include-tenant-domain",
                     "application-edit-user-attributes-include-user-domain"
                 ]
