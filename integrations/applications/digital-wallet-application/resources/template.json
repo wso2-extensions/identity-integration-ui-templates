@@ -3,7 +3,8 @@
       "name": "",
       "advancedConfigurations": {
         "discoverableByEndUsers": false,
-        "skipLogoutConsent": true
+        "skipLogoutConsent": true,
+        "skipLoginConsent": true
       },
       "imageUrl": "",
       "accessUrl": "",
