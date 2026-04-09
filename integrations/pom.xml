@@ -71,6 +71,7 @@
         <module>applications/nextjs-application</module>
         <module>applications/angular-application</module>
         <module>applications/expressjs-application</module>
+        <module>applications/vue-application</module>
         <module>applications/digital-wallet-application</module>
     </modules>
 
