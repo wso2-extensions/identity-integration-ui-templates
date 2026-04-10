@@ -25,10 +25,16 @@ const args = process.argv.slice(2);
 let remote = "upstream";
 // Default update type.
 let updateType = "patch";
+// Default base branch to compare against.
+let baseBranch = "main";
 
-if (args[0] && args[1]) {
+if (args[0] && args[1] && args[2]) {
     remote = args[0];
     updateType = args[1];
+    baseBranch = args[2];
+} else if (args[0] && args[1]) {
+    updateType = args[0];
+    baseBranch = args[1];
 } else if (args[0]) {
     updateType = args[0];
 }
@@ -46,12 +52,12 @@ if (!execCommand("git remote", true).includes(remote)) {
 
 execCommand(`git fetch ${remote}`);
 
-if (execCommand(`git merge-base HEAD ${remote}/main`, true) !== execCommand(`git rev-parse ${remote}/main`, true)) {
-    console.error(`Error: Your local branch is not up-to-date with ${remote} main branch.`);
+if (execCommand(`git merge-base HEAD ${remote}/${baseBranch}`, true) !== execCommand(`git rev-parse ${remote}/${baseBranch}`, true)) {
+    console.error(`Error: Your local branch is not up-to-date with ${remote} ${baseBranch} branch.`);
     process.exit(1);
 }
 
-const changedFiles = execCommand(`git diff --name-only ${remote}/main`, true)?.split("\n");
+const changedFiles = execCommand(`git diff --name-only ${remote}/${baseBranch}`, true)?.split("\n");
 
 function writeVersion(oldVersion, newVersion, path, releaseType) {
     if (!oldVersion && !newVersion) {
@@ -87,7 +93,7 @@ changedFiles?.forEach((file) => {
         const infoFilePath = `integrations/${integrationPath}/resources/info.json`;
         
         if (!finishedIntegrations.includes(integrationPath)) {
-            let mainBranchInfoJSON = execCommand(`git show ${remote}/main:${infoFilePath}`, true, false, false);
+            let mainBranchInfoJSON = execCommand(`git show ${remote}/${baseBranch}:${infoFilePath}`, true, false, false);
             if (mainBranchInfoJSON) {
                 mainBranchInfoJSON = JSON.parse(mainBranchInfoJSON);
             }
