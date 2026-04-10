@@ -35,7 +35,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/wso2-extensions/identity-integration-ui-templates.git
 
-          output=$(node tools/cli/update-version.js)
+          output=$(node tools/cli/update-version.js patch ${{ github.base_ref }})
 
           # Check for "Success:.*" pattern.
           if [[ "$output" =~ Success:.* ]]; then
