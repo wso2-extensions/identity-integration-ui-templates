@@ -1,0 +1,19 @@
+{
+    "id": "vue-application",
+    "version": "1.0.0",
+    "name": "Vue",
+    "description": "Client-rendered (CSR) Vue apps scaffolded with create-vue or Vite.",
+    "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/vue-logo.svg",
+    "displayOrder": 2,
+    "category": "TECHNOLOGY",
+    "tags": [
+        "OIDC"
+    ],
+    "type": "applications",
+    "customAttributes": [
+        {
+            "key": "featureStatus",
+            "value": "new"
+        }
+    ]
+}
