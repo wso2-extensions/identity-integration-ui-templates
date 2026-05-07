@@ -90,6 +90,9 @@
                 "id": "advanced"
             },
             {
+                "id": "shared-access"
+            },
+            {
                 "id": "info"
             }
         ],
