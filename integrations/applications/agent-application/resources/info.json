@@ -1,0 +1,15 @@
+{
+    "id": "agent-application",
+    "version": "1.0.0",
+    "name": "Agent Application",
+    "description": "Applications tailored for AI agents",
+    "image": "",
+    "displayOrder": 0,
+    "category": "DEFAULT",
+    "tags": [
+        "Default",
+        "OAuth2"
+    ],
+    "type": "applications",
+    "customAttributes": []
+}
