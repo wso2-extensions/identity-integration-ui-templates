@@ -23,7 +23,7 @@
       },
       "inboundProtocolConfiguration": {
         "oidc": {
-          "grantTypes": ["authorization_code"],
+          "grantTypes": ["authorization_code", "organization_switch"],
           "callbackURLs": [],
           "allowedOrigins": [],
           "publicClient": true,
