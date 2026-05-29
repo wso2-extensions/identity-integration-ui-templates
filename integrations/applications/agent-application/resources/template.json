@@ -1,0 +1,56 @@
+{
+  "payload": {
+    "name": "",
+    "advancedConfigurations": {
+      "discoverableByEndUsers": false,
+      "skipLogoutConsent": true,
+      "skipLoginConsent": true
+    },
+    "imageUrl": "",
+    "accessUrl": "",
+    "authenticationSequence": {
+      "type": "DEFAULT",
+      "steps": [
+        {
+          "id": 1,
+          "options": [
+            {
+              "idp": "LOCAL",
+              "authenticator": "basic"
+            }
+          ]
+        }
+      ]
+    },
+    "inboundProtocolConfiguration": {
+      "oidc": {
+        "grantTypes": [
+          "authorization_code",
+          "refresh_token",
+          "urn:openid:params:grant-type:ciba",
+          "urn:ietf:params:oauth:grant-type:token-exchange"
+        ],
+        "callbackURLs": [],
+        "allowedOrigins": [],
+        "publicClient": true,
+        "pkce": {
+          "mandatory": true,
+          "supportPlainTransformAlgorithm": false
+        },
+        "accessToken": {
+          "type": "Default",
+          "userAccessTokenExpiryInSeconds": 3600,
+          "applicationAccessTokenExpiryInSeconds": 3600,
+          "bindingType": "sso-session",
+          "revokeTokensWhenIDPSessionTerminated": true,
+          "validateTokenBinding": false
+        },
+        "refreshToken": {
+          "expiryInSeconds": 86400,
+          "renewRefreshToken": true
+        },
+        "hybridFlowResponseType": "code_idtoken"
+      }
+    }
+  }
+}
