@@ -74,6 +74,7 @@
         <module>applications/expressjs-application</module>
         <module>applications/vue-application</module>
         <module>applications/digital-wallet-application</module>
+        <module>applications/agent-application</module>
     </modules>
 
     <build>
