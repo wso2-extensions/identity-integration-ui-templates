@@ -1,6 +1,6 @@
 {
     "id": "nuxt-application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Nuxt.js",
     "description": "Server-rendered (SSR) Nuxt apps with seamless Asgardeo authentication via the @asgardeo/nuxt module.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/nuxtjs-logo.svg",

@@ -1,6 +1,6 @@
 {
     "id": "vue-application",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "Vue",
     "description": "Client-rendered (CSR) Vue apps scaffolded with create-vue or Vite.",
     "image": "${CONSOLE_BASE_URL}/resources/applications/assets/images/technologies/vue-logo.svg",

@@ -43,7 +43,8 @@
                 },
                 "grantTypes": [
                     "authorization_code",
-                    "refresh_token"
+                    "refresh_token",
+                    "organization_switch"
                 ],
                 "allowedOrigins": [],
                 "callbackURLs": [],
