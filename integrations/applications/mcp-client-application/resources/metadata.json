@@ -59,13 +59,7 @@
                     "application-edit-access-settings-inbound-oauth2-oidc-form-access-token-binding-type",
                     "application-edit-access-settings-inbound-oauth2-oidc-form-validate-token-binding",
                     "application-edit-access-settings-inbound-oauth2-oidc-form-revoke-access-token-upon-user-logout",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-expiry-time",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-response-signing-algorithm",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-audience",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-algorithm",
-                    "application-edit-access-settings-inbound-oauth2-oidc-form-id-token-encryption-method"
+                    "application-edit-access-settings-inbound-oauth2-oidc-form-logout-urls"
                 ]
             },
             {
